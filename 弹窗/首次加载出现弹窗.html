@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<title>标题页</title>
+<script LANGUAGE="JavaScript">
+//弹出窗口的方法
+function openpopup(){ 
+   window.open("http://www.baidu.com","","width=300,height=300") 
+//设置打开窗口 
+   } 
+function get_cookie(Name) 
+{ 
+   var search = Name + "=" 
+   var returnvalue = ""; 
+   if (document.cookie.length > 0) { 
+     offset = document.cookie.indexOf(search) 
+     if (offset != -1) {                            
+// 如果指定的cookie已经存在
+        offset += search.length                     
+// 长度指定到cookie值的位置               
+        end = document.cookie.indexOf(";", offset); 
+// 判断是否还包括其他cookie值
+        if (end == -1)                              
+//如果不包括
+           end = document.cookie.length;            
+//获取cookie的长度
+        returnvalue=unescape(document.cookie.substring(offset, end)) 
+//获取cookie的值
+      } 
+   }   
+   return returnvalue; 
+} 
+function loadpopup(){ 
+  if (get_cookie("popped")==""){                   
+//判断是否已经弹出过窗口
+     openpopup()                                   
+//如果没有则弹出窗口
+     document.cookie="popped=yes"                  
+//设置cookie值
+    } 
+}
+</script>
+</head>
+<body>
+<input type=button name="btn1" value="打开窗口!" onclick="loadpopup()">
+</body>
+</html>

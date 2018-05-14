@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复选框点击事件</title>
+</head>
+<body>
+	<div>
+		<input  type="checkbox" id="my_input">
+		<button type="button" onclick="test()">检测</button>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	function test(){
+      	if($("#my_input").attr("checked")){
+          	alert("YES");
+      	}else{
+         	alert("NO");
+      	}
+	}
+</script>
+</html>

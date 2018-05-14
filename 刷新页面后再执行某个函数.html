@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	p{
+		display: none;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.0.js"></script>
+<body>
+	<div>点击我</div>
+	<p>我出现啦</p>
+</body>
+</html>
+<script type="text/javascript">
+	// refresh=function(){
+	// 	console.log("in1")
+	//     window.location.reload(); 
+	// }
+	$('div').click(function () {
+		var isTrue=false;
+        refresh();
+        if(isTrue==true)
+        {
+            $('p').show();
+        }
+        function refresh()
+        {
+            $('p').show();
+            isTrue=true;
+        } 
+	})
+	console.log("1111");
+	/*$('div').click(function () {
+			window.location.href=window.location.href+'?reload=1';
+	})*/
+
+</script>

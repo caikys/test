@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+
+<head>
+    <meta charset="UTF-8">
+    <title>pagination.js - 分页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="./common/reset.css" media="screen">
+    <!-- <link rel="stylesheet" type="text/css" href="./common/highlight.min.css" media="screen"> -->
+    <link rel="stylesheet" type="text/css" href="./common/common.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="./pagination.css" media="screen">
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="content">
+                <div class="eg">
+                    <div class="m-style M-box"></div>
+                    <p class="tips">当前是第
+                        <span class="now"></span>页
+                    </p>
+                </div>
+                <div class="eg">
+                    <div class="m-style M-box11"></div>
+                </div>
+                <div class="eg">
+                    <div class="m-style M-box2"></div>
+                </div>
+                <div class="eg">
+                    <div class="m-style M-box1"></div>
+                    <p class="tips">
+                        总数据
+                        <span class="count">100</span>条，每页显示
+                        <span class="count">5</span>条，总页数为
+                        <span class="count">20</span>页
+                </div>
+                <div class="eg">
+                    <div class="m-style M-box3"></div>
+                </div>
+                <div class="eg">
+                    <div class="m-style M-box4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="./common/highlight.min.js"></script> -->
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="./jquery.pagination.js"></script>
+    <script>
+        $(function () {
+            $('.M-box').pagination({
+                callback: function (api) {
+                    $('.now').text(api.getCurrent());
+                }
+            }, function (api) {
+                $('.now').text(api.getCurrent());
+            });
+
+            $('.M-box11').pagination({
+                mode: 'fixed'
+            });
+            
+            $('.M-box2').pagination({
+                coping: true,
+                homePage: '首页',
+                endPage: '末页',
+                prevContent: '上页',
+                nextContent: '下页'
+            });
+
+            $('.M-box1').pagination({
+                totalData: 100,
+                showData: 5,
+                coping: true
+            });
+
+            $('.M-box3').pagination({
+                pageCount: 5,
+                jump: true,
+                coping: true,
+                homePage: '首页',
+                endPage: '末页',
+                prevContent: '上页',
+                nextContent: '下页',
+                callback: function (api) {
+                    var data = {
+                        page: api.getCurrent(),
+                        name: 'mss',
+                        say: 'oh'
+                    };
+                    $.getJSON(
+                        'https://www.easy-mock.com/mock/58fff7a5739ac1685205ad5d/example/pagination#!method=get',
+                        data,
+                        function (json) {
+                            console.log(json);
+                        });
+                }
+            });
+
+            $('.M-box4').pagination({
+                pageCount: 50,
+                jump: true,
+                callback: function (api) {
+                    var data = {
+                        page: api.getCurrent(),
+                        name: 'mss',
+                        say: 'oh'
+                    };
+                    $.getJSON(
+                        'https://www.easy-mock.com/mock/58fff7a5739ac1685205ad5d/example/pagination#!method=get',
+                        data,
+                        function (json) {
+                            console.log(json);
+                        });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

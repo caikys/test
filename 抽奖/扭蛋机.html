@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
+	<title>Document</title>
+</head>
+<style type="text/css">
+	* { padding: 0px; margin: 0px; font-family: "微软雅黑"; font-size: 100%; font-style: normal }dd, dl, dt, em, i, p, textarea, a, div { padding: 0px; margin: 0px; }a { text-decoration: none; }img { border: 0px; }ul, li { padding: 0px; margin: 0px; list-style: none; }.fl { float: left }.fr { float: right }body { margin: 0px; padding: 0px; color: #ffc476; background: #fff; color: #000000 }a { -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-tap-highlight-color: transparent; }.none { display: none }/*扭蛋机*/.niu_danji { width: 640px; height: 1039px; background: #1b1009; margin: 0px auto; overflow: hidden; position: relative }.niu_danji .game_qu { background: url(../images/1.jpg) no-repeat; width: 553px; height: 767px; left: 47px; top: 74px; position: absolute; z-index: 3 }.niu_danji .game_go { width: 134px; height: 50px; position: absolute; left: 210px; bottom: 225px; background: url(../images/1.jpg) no-repeat; font-size: 18px; color: #fff; line-height: 20px; text-align: center; padding-top: 90px; }.niu_danji .wdjifen { font-size: 20px; color: #e00b37; width: 128px; height: 35px; line-height: 35px; position: absolute; left: 206px; bottom: 120px; text-align: center }.niu_danji .an_jfgr { width: 100%; text-align: center; padding-top: 23px; position: absolute; left: 0px; bottom: 60px; }.niu_danji .an_jfgr img { margin: 0px 7px; }.niu_danji .dan_gund { width: 500px; height: 447px; position: absolute; left: 68px; top: 80px; z-index: 1; -webkit-border-radius: 240px 240px 0px 0px; -moz-border-radius: 240px 240px 0px 0px; border-radius: 240px 240px 0px 0px; overflow: hidden }.niu_danji .dan_gund span { width: 115px; height: 115px; }/*中奖*/.zonj_zezc { width: 640px; min-height: 1039px; position: absolute; left: 50%; top: 0px; z-index: 4; background: rgba(0,0,0,0.85); margin-left: -320px; }.zonj_zezc .jpzs { width: 450px; height: 286px; position:relative；-webkit-border-radius:10px;-moz-border-radius: 10px; border-radius: 10px; background: #fff; margin: 300px auto 0px auto; position: relative }.zonj_zezc .jpzs em { height: 95px; position: absolute; right: 0px; top: -50px; }.zonj_zezc .jpzs h2 { font-size: 36px; color: #ff1a4b; text-align: center; line-height40px;display: flex; justify-content: center; align-items: center; height: 286px; }.qiu_1 { position: absolute; left: 55px; top: 272px; }.qiu_1:after { content: ""; position: absolute; left: 0; top: 0; width: 115px; height: 115px; display: block; background: url(../images/2.jpg) no-repeat; animation: zhuan 1s linear forwards; -webkit-animation: zhuan 1s linear forwards; }.qiu_2 { position: absolute; left: 3px; top: 200px }.qiu_2:after { content: ""; position: absolute; left: 0; top: 0; width: 115px; height: 115px; display: block; background: url(../images/1.jpg) no-repeat; animation: zhuan 1s linear forwards; -webkit-animation: zhuan 1s linear forwards; }.qiu_3 { position: absolute; left: 10px; top: 348px; }.qiu_3:after { content: ""; position: absolute; left: 0; top: 0; width: 115px; height: 115px; display: block; background: url(../images/1.jpg) no-repeat; animation: zhuan 1s linear forwards; -webkit-animation: zhuan 1s linear forwards; }
+</style>
+<body>
+	<div class="niu_danji">   
+		<!--机器-->  
+		<div class="game_qu">     
+			<!--go-->    
+			<div class="game_go">100/次</div>    
+			<div class="wdjifen">10000</div>  
+		</div>    
+		<!--球-->  
+		<div class="dan_gund"> 
+			<span  class="qiu_1 diaol_1"></span> 
+			<span  class="qiu_2 diaol_2"> </span> 
+			<span  class="qiu_3 diaol_3"></span> 
+			<span  class="qiu_4 diaol_4"></span> 
+			<span  class="qiu_5 diaol_5"></span> 
+			<span  class="qiu_6 diaol_6"></span>> 
+			<span  class="qiu_7 diaol_7"></span> 
+			<span  class="qiu_8 diaol_8"></span> 
+			<span  class="qiu_9 diaol_9"></span> 
+			<span  class="qiu_10 diaol_10"></span> 
+			<span  class="qiu_11 diaol_11"></span> 
+		</div>    
+		<!--中奖掉落-->  
+		<div class="medon">
+			<img src="../images/1.jpg">
+		</div>  
+		<div class="zjdl "> 
+			<span></span> 
+		</div>
+	</div>
+	<!--中奖 获得一等奖-->
+	<div class="zonj_zezc none" id="jianpin_one">  
+		<div class="jpzs aiqiyi tc_anima"> 
+			<em><img src="../images/1.jpg"></em>    
+			<h2> <b>恭喜你！<br>      获得一等奖！</b> 
+			</h2>  
+		</div>
+	</div>
+	<!--中奖获得二等奖-->
+	<div class="zonj_zezc none"  id="jianpin_two">  
+		<div class="jpzs aiqiyi tc_anima"> 
+			<em><img src="../images/1.jpg"></em>    
+			<h2> <b>恭喜你！<br>      获得二等奖！</b> </h2>  
+		</div>
+	</div>
+	<!--中奖 获得三等奖-->
+	<div class="zonj_zezc none"  id="jianpin_three">  
+		<div class="jpzs aiqiyi tc_anima"> 
+			<em><img src="../images/1.jpg"></em>    
+			<h2> <b>恭喜你！<br>获得三等奖！</b> </h2>  
+		</div>
+	</div>
+	<!--没有中奖-->
+	<div class="zonj_zezc none" id="jianpin_kong">  
+		<div class="jpzs aiqiyi tc_anima"> 
+			<em><img src="../images/1.jpg"></em>    
+			<h2> 咦？没有抽中？ </h2>  
+		</div>
+	</div>
+	<!--积分不足-->
+	<div class="zonj_zezc none" id="no_jifeng">  
+		<div class="jpzs aiqiyi tc_anima"> 
+			<em><img src="../images/1.jpg"></em>    
+			<h2> 对不起，积分不足！ </h2>  
+		</div>
+	</div>
+</body>
+<script src="../js/jquery-1.12.0.js"></script>
+<script>    
+	var phoneWidth =  parseInt(window.screen.width);    
+	var phoneScale = phoneWidth/640;    
+	var ua = navigator.userAgent;    
+	if (/Android (\d+\.\d+)/.test(ua)){        
+		var version = parseFloat(RegExp.$1);        
+		// andriod 2.3        
+		if(version>2.3){            
+			document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');        
+		// andriod 2.3以上        
+		}else{           
+			document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');        
+		}        
+		// 其他系统    
+		} else {        
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');    
+		}    
+		//微信去掉下方刷新栏    
+		if(RegExp("MicroMessenger").test(navigator.userAgent)){        
+			document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() { WeixinJSBridge.call('hideToolbar');        
+		});    
+	}
+</script>
+
+</html>

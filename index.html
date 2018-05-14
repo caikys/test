@@ -1,0 +1,19 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">  
+</script>  
+<script>  
+$(document).ready(function(){  
+  $("p").click(function(){  
+    $(this).hide();//$(this)是在方法click内，此处的$(this)表示的是当前调用click方法的对象$("p")，就是表示当前对象，当前调用该方法的对象  
+  });  
+});  
+</script>  
+</head>  
+<body>  
+<p>如果您点击我，我会消失。</p>  
+<p>点击我，我会消失。</p>  
+<p>也要点击我哦。</p>  
+</body>  
+</html>  

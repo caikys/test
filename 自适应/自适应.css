@@ -1,0 +1,30 @@
+/*多分辨率设定rem设定 */
+html {
+  font-size: 20px !important; }
+
+/*Note3*/
+@media only screen and (min-width: 360px) {
+  html {
+    font-size: 22px !important; } }
+/*iPhone6*/
+@media only screen and (min-width: 375px) {
+  html {
+    font-size: 23px !important; } }
+/*iPhone6 plus*/
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 25px !important; } }
+/*big Resolution*/
+@media only screen and (min-width: 641px) {
+  html {
+    font-size: 25px !important; } }
+
+
+
+
+/**
+    配置cssrem 
+    1.设计稿为750：
+    "px-to-rem.px-per-rem": 23,
+    "cssrem.rootFontSize": 23,
+*/

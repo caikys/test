@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var obj = document.getElementByIdx_x('id');
+	obj.addEventListener('touchmove', function(event) {
+	     // 如果这个元素的位置内只有一个手指的话
+	    if (event.targetTouches.length == 1) {
+	　　　　 event.preventDefault();// 阻止浏览器默认事件，重要 
+	        var touch = event.targetTouches[0];
+	        // 把元素放在手指所在的位置
+	        obj.style.left = touch.pageX-50 + 'px';
+	        obj.style.top = touch.pageY-50 + 'px';
+	        }
+	}, false);
+</script>
+</html>

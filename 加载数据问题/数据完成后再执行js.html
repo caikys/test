@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script type="text/javascript">
+	// 方法一：定时器判断内容是否加载内容是否为空，不为空就清除定时器，然后执行js
+    var timer=setInterval(function(){
+        if(!$('#categroy-cnt').html()==''){//加载完成
+            clearInterval(timer);
+            $('#categroy-cnt .categroy-list .category-item').each(function(){
+                var date_id=$(this).find('.category-item-a').attr('date-id');
+                if(date_id==gc_id_one){
+                    $('#categroy-cnt .categroy-list .category-item').removeClass('selected')
+                    $(this).addClass('selected');
+                }
+            })
+        }else{
+        }
+	},1000);
+	var timer_b=setInterval(function(){
+        if(!$('#categroy-rgt').html()==''){//加载完成
+            clearInterval(timer_b);
+            console.log("未加载完")             
+            $('.three_'+gc_id).addClass('active')
+        }else{
+            console.log("未加载完")
+        }
+	},1000);
+
+
+    // 方法二：延迟执行，缺点不太好确定加载完的时间不建议使用
+    setTimeout( function(){ 
+        console.log($('.three_'+gc_id))
+        $('.three_'+gc_id).addClass('active')
+    }, 9900);
+
+    
+
+    
+    
+    
+</script>

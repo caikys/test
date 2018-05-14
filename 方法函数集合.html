@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function getQueryString(e) {
+	    var t = new RegExp("(^|&)" + e + "=([^&]*)(&|$)");
+	    console.log(t)
+	    console.log(window.location.search)
+	    var a = [1,6,8];
+	    console.log(a)
+	    if (a != null)return a[2];//如果成立执行这行，否则执行下一行返回空
+	    return ""
+	}
+	console.log(getQueryString("key"));
+
+	var r =new Date();
+	console.log(r)
+	console.log(r.toGMTString())//toGMTString() 方法可根据格林威治时间 (GMT) 把 Date 对象转换为字符串，并返回结果。
+	var a=50;
+	r.setTime(r.getTime() + a * 3600 * 1e3);
+
+	function ncScrollLoad(){
+		console.log("in")
+	}
+	var i=new ncScrollLoad();
+	// console.log(typeof i)
+
+	// console.log(r)
+</script>
+</html>

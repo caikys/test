@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	.disabled{
+		background-color: red!important;
+	}
+</style>
+<body>
+	<button class="aa">点我</button>
+	<button id="71:191">变灰</button>
+	<span id="dd">我也变灰</span>
+	<div class="select disabled">我哦</div>
+	<div class="select disabled">我哈</div>
+	<ul>
+		<li class="qq">哈哈</li>
+		<li class="qq">嘻嘻</li>
+		<li class="qq">哟哟</li>
+	</ul>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.12.0.js"></script>
+<script type="text/javascript">
+	$(".aa").click(function(){
+		var aa = document.getElementById('71:191');
+		aa.style.background="red";
+		// $('#'+aa).addClass("disabled");
+		$("#dd").addClass("disabled");
+		// var cc = document.getElementsByClassName("disabled");
+		// cc[0].classList.remove("disabled");
+		$(".select").removeClass("disabled")
+	})
+
+	var count=0;
+	$(".qq").each(function(){
+		count++;
+		console.log("in")
+	})
+	console.log(count)
+</script>

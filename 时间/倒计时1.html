@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时1</title>
+	<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+	<span class="time">
+		<span class="day-show"></span>
+		<span class="hour-show"></span>
+		<span class="minute-show"></span>
+		<span class="second-show"></span>
+		<span>结束</span>
+	</span>
+</body>
+<script type="text/javascript">
+	//倒计时
+    var remaining_time = function (intDiff,show_scope){
+        if(!show_scope)return;
+        setInterval((function(){
+            var day=0,
+            	days=0,
+                hour=0,
+                minute=0,
+                second=0;//时间默认值
+            if(intDiff > 0){
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            // if (minute <= 9) minute = '0' + minute;
+            // if (second <= 9) second = '0' + second;
+            day=("0"+day).slice(-2);
+            hour=("0"+hour).slice(-2);
+            minute=("0"+minute).slice(-2);
+            second=("0"+second).slice(-2);
+            show_scope.find('.day-show').html(""+day+"天");
+            show_scope.find('.hour-show').html('<s id="h"></s>'+hour+'时');
+            show_scope.find('.minute-show').html('<s></s>'+minute+'分');
+            show_scope.find('.second-show').html('<s></s>'+second+'秒 后');
+            intDiff--;
+            return arguments.callee;
+        })(), 1000);
+    };
+
+    var time_end = (new Date('2017/6/20 11:41:00').getTime());
+    // var time_start = new Date('2017/6/13 11:41:00').getTime();
+    var time_start = (new Date().getTime());
+    console.log(time_end);
+    console.log(time_start);
+    var intdiff=parseInt(time_end-time_start)/1000;
+    console.log(intdiff);
+    remaining_time(intdiff,$('.time'));
+    
+
+
+    /*
+    var startTime = new Date();
+    //定义参数可返回当天的日期和时间
+    startTime.setFullYear(2017, 6, 14);
+    //调用设置年份
+    startTime.setHours(23);
+    //调用设置指定的时间的小时字段
+    startTime.setMinutes(59);
+    //调用设置指定时间的分钟字段
+    startTime.setSeconds(59);
+    //调用设置指定时间的秒钟字段
+    startTime.setMilliseconds(999);
+    //调用置指定时间的毫秒字段
+    var EndTime=startTime.getTime();
+    var NowTime = new Date();
+    //定义参数可返回当天的日期和时间
+    console.log(EndTime);
+    console.log(NowTime.getTime());
+    var nMS = EndTime - NowTime.getTime();
+    remaining_time(nMS,$('.time'));
+    */
+</script>
+</html>

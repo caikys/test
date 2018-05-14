@@ -1,0 +1,123 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <title> WebApp图标导航实例 </title>  
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">  
+    <meta name="app-mobile-web-app-capable" content="yes">  
+    <link rel="stylesheet" type="text/css" href="css/commonstyle.css">  
+</head>  
+<style>  
+    .swipe {  
+        overflow: hidden;  
+        visibility: hidden;  
+        position: relative;  
+    }  
+    .swipe-wrap {  
+        overflow: hidden;  
+        position: relative;  
+    }  
+    .swipe-wrap > figure {  
+        float: left;  
+        width: 100%;  
+        position: relative;  
+    }  
+    #slider {  
+        /* max-width: 650px;设置最大的宽度 */  
+        margin: 0px auto; /* 居中对齐 */  
+    }  
+  
+    figure {  
+        margin: 0;/* 对齐，四周宽度都为0，在轮播的时候，以整张图片进行移动 */  
+    }  
+    div.swipe {  
+    /* border: 1px solid blue; */  
+}  
+.page-swipe #nav #position {  
+    text-align: center;  
+    list-style: none;  
+    margin: 0;  
+    padding: 0  
+    line-height:10px  
+}  
+.page-swipe #nav #position li {  
+    display: inline-block;  
+    width: 10px;  
+    height: 10px;  
+    border-radius: 10px;  
+    margin: 0 2px;  
+    cursor: pointer  
+    display:inline-block;margin-right:3px;background-color:#ccc;border-radius:4px;-webkit-border-radius:4px;width:8px;height:8px  
+}  
+.page-swipe #nav #position li.on {  
+    background-color:#f5734b  
+}  
+  
+</style>  
+<body class="page-swipe">  
+<div id="slider" class="swipe" style="visibility:visible;">  
+    <div class="swipe-wrap">  
+        <figure>  
+            <ul class="pic_link clearfix">  
+                <li><a class="bg_huilan"><img src="images/link_01.png"></a><span>美食</span></li>  
+                <li><a class="bg_dahong"><img src="images/link_02.png"></a><span>电影</span></li>  
+                <li><a class="bg_qing"><img src="images/link_03.png"></a><span>休闲娱乐</span></li>  
+                <li class="last"><a class="bg_lv "><img src="images/link_04.png"></a><span>丽人</span></li>  
+                <li><a class="bg_cheng"><img src="images/link_05.png"></a><span>闪惠团购</span></li>  
+                <li><a class="bg_zi"><img src="images/link_06.png"></a><span>外卖</span></li>  
+                <li><a class="bg_meihong"><img src="images/link_07.png"></a><span>酒店</span></li>  
+                <li class="last"><a class="bg_lan "><img src="images/link_08.png"></a><span>足疗按摩</span></li>  
+            </ul>  
+        </figure>  
+        <figure>  
+            <ul class="pic_link clearfix">  
+                <li><a class="bg_huilan"><img src="images/link_01.png"></a><span>美食2</span></li>  
+                <li><a class="bg_dahong"><img src="images/link_02.png"></a><span>电影2</span></li>  
+                <li><a class="bg_qing"><img src="images/link_03.png"></a><span>休闲娱乐2</span></li>  
+                <li class="last"><a class="bg_lv "><img src="images/link_04.png"></a><span>丽人2</span></li>  
+                <li><a class="bg_cheng"><img src="images/link_05.png"></a><span>闪惠团购2</span></li>  
+                <li><a class="bg_zi"><img src="images/link_06.png"></a><span>外卖2</span></li>  
+                <li><a class="bg_meihong"><img src="images/link_07.png"></a><span>酒店2</span></li>  
+                <li class="last"><a class="bg_lan "><img src="images/link_08.png"></a><span>足疗按摩2</span></li>  
+            </ul>  
+        </figure>  
+        <figure>  
+            <ul class="pic_link clearfix">  
+                <li><a class="bg_huilan"><img src="images/link_01.png"></a><span>美食3</span></li>  
+                <li><a class="bg_dahong"><img src="images/link_02.png"></a><span>电影3</span></li>  
+                <li><a class="bg_qing"><img src="images/link_03.png"></a><span>休闲娱乐3</span></li>  
+                <li class="last"><a class="bg_lv "><img src="images/link_04.png"></a><span>丽人3</span></li>  
+                <li><a class="bg_cheng"><img src="images/link_05.png"></a><span>闪惠团购3</span></li>  
+                <li><a class="bg_zi"><img src="images/link_06.png"></a><span>外卖3</span></li>  
+                <li><a class="bg_meihong"><img src="images/link_07.png"></a><span>酒店3</span></li>  
+                <li class="last"><a class="bg_lan "><img src="images/link_08.png"></a><span>足疗按摩3</span></li>  
+            </ul>  
+        </figure>  
+    </div>  
+</div>  
+<div id="nav" style="margin-top: -3em;">  
+    <ul id="position">  
+        <li class="on"></li>  
+        <li class=""></li>  
+        <li class=""></li>  
+    </ul>  
+</div>  
+<script src="js/swipe.js"></script>  
+<script>  
+    var slider =  
+            Swipe(document.getElementById('slider'), {  
+                auto: 3000,  
+                loop: false,  
+                continuous: true,  
+                callback: function(pos) {  
+                    var i = bullets.length;  
+                    while(i--){  
+                        bullets[i].className = ' ';  
+                    }  
+                    bullets[pos].className = 'on';  
+                }  
+            });  
+    var bullets = document.getElementById('position').getElementsByTagName('li');  
+</script>  
+</body>  
+</html>  

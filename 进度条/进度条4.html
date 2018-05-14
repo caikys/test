@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery实现进度条</title>
+<style>
+ .progressBar{width:200px;height:8px;border:1px solid #98AFB7;border-radius:5px;margin-top:10px;}
+ #bar{width:0px;height:8px;border-radius:5px;background:#5EC4EA;}
+</style>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+function progressBar(){
+    //初始化js进度条
+    $("#bar").css("width","0px");
+    //进度条的速度，越小越快
+    var speed = 20;
+
+    bar = setInterval(function(){
+    nowWidth = parseInt($("#bar").width());
+    //宽度要不能大于进度条的总宽度
+    if(nowWidth<=200){
+        barWidth = (nowWidth + 1)+"px";
+        $("#bar").css("width",barWidth);
+    }else{
+    //进度条读满后，停止
+    clearInterval(bar);
+    } 
+    },speed);
+}
+</script>
+</head>
+<body>
+ <input type="button" value="开始" onclick="progressBar()" />
+ <div class="progressBar"><div id="bar"></div></div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript" src="js/html2canvas.min.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<body>
+	 <section class="share_popup" id="html2canvas">  
+		<p>html2canvas 的使用非常简单，简单到只需要传入一个 DOM 元素，然后通过回调拿到 canvas</p>  
+		<p><img src="images/1.jpg"></p>  
+		<p>html2canvas 的使用非常简单，简单到只需要传入一个 DOM 元素，然后通过回调拿到 canvas</p>  
+	 </section>
+</body>
+</html>
+<script type="text/javascript">
+	var str = $('#html2canvas');  
+	//console.log(str);  
+	html2canvas([str.get(0)], {  
+	    onrendered: function (canvas) {  
+	        var image = canvas.toDataURL("image/png");  
+	        var pHtml = "<img src="+image+" />";  
+	        $('#html2canvas').html(pHtml);  
+	    }  
+	});
+</script>
+
+
+
+

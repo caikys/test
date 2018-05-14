@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上拉分页效果</title>
+</head>
+<body>
+	
+</body>
+<!-- <script src="http://code.baidu.com/touch-0.2.14.min.js"></script> -->
+<script>
+// touch.on('body', 'swipeup swipedown', function(ev){
+//     alert("you have done", ev.type);
+//     //ev.originEvent 当前DOM对象 这里是 body
+//     //ev.distanceY 上下滑动距离。向上为负数，向下为正数。
+//     ev.originEvent.scrollTop += ev.distanceY; //上下滑动带动滑动条上下滚动
+//     //判断页面到达底部。
+//     if(ev.originEvent.scrollTop ==  ev.originEvent.scrollHeight){
+//         // ajax 获取下一页（条）内容。并追加到 ev.originEvent （body）内末尾。
+//     }
+// });
+
+
+// var m=3,n;//这里一下子定义了两个变量m和n,是简写。对于新手来说，为了不混淆，还是分开写
+// // 以上可以这样写
+// var m=3;
+// var n="";//这里“”引号的意思是定义一个值为空的变量
+
+
+
+// //关于你昨天不懂的那个问题："m="+m+",n"+m;
+// var m=3;
+// var n="";
+// n=m++;//这里的等号是赋值的意思，将右边的赋值给左边的,右边：m++,表示在原来的基础上加1，原本m为3，m++后就为4，左边：原本n为空，右边的赋值给左边的，所以n值为4；
+// // console.log("m="+m+",n="+n);//输出:m=4,n=4;
+// // 除了变量，其他东西你都可以用“”双引号写出来，浏览器会原样输出的，他上面之所以逗号也加在里面是以为他想弄各一个间隔，你加句号也行，不加也行，只是为了更加直观而已
+var a=100;
+var b="100";
+alert(a=b);
+</script>
+</html>

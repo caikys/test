@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+	#tulipb{
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+	}
+	.dd{
+		background: url(images/4.jpg) no-repeat;
+		background-size: 100%;
+        width: 100%;
+        height: 660px;
+	}
+	#demo{
+		color: #fff;
+		position: absolute;
+		top: 30px;
+		left: 20px;
+	}
+</style>
+<body>
+<div id="a" class="dd">
+	<div id="demo">的实例化发送卡方式咖啡来看撒旦法是分开的撒话费卡萨饭卡沙发上课</div>
+	<img id="tulipa" src="images/1.jpg"/>
+	<img id="tulipb" src="images/4.jpg" alt="">
+</div>
+
+<p>画布：</p>
+<!-- <canvas id="myCanvas"></canvas> -->
+<script type="text/javascript" src="js/html2canvas.min.js"></script>
+<script type="text/javascript">
+	// var demo=document.getElementById("demo");
+ //    html2canvas(demo).then(function(canvas) {
+ //        document.body.appendChild(canvas);
+ //        canvas_id:ds;
+ //    });
+
+
+    html2canvas(document.getElementById("a"), { 
+		onrendered: function(canvas) { 
+			document.body.appendChild(canvas);//生成画布后如何处理，当然可以在新标签打开，在浮层展示等等
+			canvas.id = "contenthh"; 
+			var c = document.getElementById("contenthh"),
+			ctx = c.getContext("2d"),
+			imga = new Image();
+			imgb = new Image();
+			imga.onload = function(){
+				drawImga(1);//在图片的加载之后，才可以执行画图操作
+			}
+			imgb.onload = function(){
+				drawImga(1);//在图片的加载之后，才可以执行画图操作
+			}
+			imga.src =  document.getElementById("tulipa").getAttribute("src");
+			imgb.src =  document.getElementById("tulipb").getAttribute("src");
+			//画图1函数
+			function drawImga(scale){
+				var iw = c.width * scale, //计算图片宽度
+					ih = c.height * scale,
+					x = c.width / 2 - iw / 2; //计算图片在画布上显示的坐标
+					y = c.height / 2 - ih / 2;
+				ctx.drawImage(imga,50,50,200,200);
+
+			}
+
+			//画图1函数
+			function drawImgb(scale){
+				var iw = c.width * scale, //计算图片宽度
+					ih = c.height * scale,
+					x = c.width / 2 - iw / 2; //计算图片在画布上显示的坐标
+					y = c.height / 2 - ih / 2;
+				ctx.drawImage(imgb,300,300,50,50);
+
+			}
+
+			var img = new Image;
+			img.crossOrigin = 'anonymous';
+			var tempSrc = canvas.toDataURL("image/png");
+			img.src=tempSrc; 
+			document.body.appendChild(img);
+		    
+		}
+	});
+</script>
+
+<!-- <script>
+
+var c = document.getElementById("myCanvas"),
+	ctx = c.getContext("2d"),
+	img = new Image(); //用js创建一个图片dom，这个dom只存在于浏览器内存，不会显示在页面上
+//图片加载完成后触发图片元素自己的onload事件
+img.onload = function(){
+	drawImg(1);//在图片的加载之后，才可以执行画图操作
+}
+img.src =  document.getElementById("tulip").getAttribute("src");
+
+//画图函数
+function drawImg(scale){
+	var iw = c.width * scale, //计算图片宽度
+		ih = c.height * scale,
+		x = c.width / 2 - iw / 2; //计算图片在画布上显示的坐标
+		y = c.height / 2 - ih / 2;
+
+	ctx.clearRect(0,0,c.width,c.height); //在画图之前，先清场
+	ctx.drawImage(img,x,y,iw,ih);
+
+}
+
+
+</script> -->
+
+</body>
+</html>

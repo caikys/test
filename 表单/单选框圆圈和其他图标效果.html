@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/flexible.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+</head>
+<style type="text/css">
+	#checkbox{
+		position: relative;
+	    width: 0.55rem;
+	    height: 0.55rem;
+	    background-color: #ffffff;
+	    border: 1px solid #ce2739;
+	    -webkit-border-radius: 50%;
+	    border-radius: 50%;
+	    vertical-align: middle;
+	    user-select: text;
+	    -webkit-appearance: none;/*主要代码*/
+	    margin: 0;
+	    outline: none;
+	}
+	#checkbox[type="checkbox"]:checked {
+	    background-color: #ce2739;
+	}
+	#checkbox[type="checkbox"]:checked:after {
+	    content: '';
+	    position: absolute;
+	    left: 0.08rem;
+	    top: 0.07rem;
+	    width: 0.32rem;
+	    height: 0.19rem;
+	    border-left: 1px solid #fff;
+	    border-bottom: 1px solid #fff;
+	    -webkit-transform: rotate(-45deg);
+	    -ms-transform: rotate(-45deg);
+	    transform: rotate(-45deg);
+	}
+
+	.power{
+		position: relative;
+	    z-index: 1;
+	    display: inline-block;
+	    vertical-align: middle;
+	    width: 1.03rem;
+	    height: 0.47rem;
+	    background: #6e6e6e;
+	    border-radius: 0.3rem;
+	}
+	.power i{
+		position: absolute;
+	    z-index: 1;
+	    top: 0.05rem;
+	    left: 0.08rem;
+	    width: 0.36rem;
+	    height: 0.36rem;
+	    background-color: #FFF;
+	    border-radius: 100%;
+	}
+	.power.checked{
+		background: #da273b
+	}
+	.power.checked i{
+		left: auto;
+	    right: 0.08rem;
+	}
+
+</style>
+<body>
+	<input id="checkbox" type="checkbox" checked="" class="checkbox">
+	<input type="checkbox">
+    <span class="power checked-power "><i></i></span> 
+</body>
+<script type="text/javascript">
+$("body").on("click", ".power", function () {
+    if ($(this).hasClass("checked")) {
+        $(this).removeClass("checked");//关闭
+    }else {
+        $(this).addClass("checked");//开启
+    }
+    
+});
+</script>
+</html>

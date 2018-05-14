@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	/**
+	 * [getQueryString 获取页面 URL 地址？后面的参数的值]
+	 * @param  {[string]} e [？后的参数名]
+	 * @return {[string]}   [返回参数值]
+	 */
+	function getQueryString(e) {
+	    var t = new RegExp("(^|&)" + e + "=([^&]*)(&|$)");
+	    // window.location.search从问号 (?) 开始的 URL（查询部分）
+	    // var a = window.location.search.substr(1).match(t);
+	    var url="http://syhmall.local.com/wap/tmpl/product_detail.html?goods_id=13975";
+	    var a="?goods_id=13975".substr(1).match(t);
+	    if (a != null)return a[2];
+	    return ""
+	}
+	// console.log(getQueryString("goods_id"))
+	
+	/**
+	 * [addCookie 添加cookie]
+	 * @param  {[string]} e（必要参数） [cookie名称]
+	 *         {[string]} t（必要参数）[cookie值]   
+	 *         {[string]} a（非必要参数） [过期的时间，单位小时]           
+	 * @return 无
+	 */
+	function addCookie(e, t, a) {
+	    var n = e + "=" + escape(t) + "; path=/";
+	    if (a > 0) {
+	        var r = new Date;
+	        r.setTime(r.getTime() + a * 3600 * 1e3);
+	        n = n + ";expires=" + r.toGMTString()
+	    }
+	    document.cookie = n
+	}
+	addCookie("usernameq","haha",24)
+	
+	/**
+	 * [getCookie 添加cookie]
+	 * @param  {[string]} e [cookie名称]
+	 *         {[string]} t [cookie值]   
+	 *         {[string]} a [过期的时间，单位小时]           
+	 * @return {[string]}   [返回null 或者 对应cookie的cookie值]
+	 */
+	function getCookie(e) {
+	    var t = document.cookie;
+	    console.log(t)
+	    var a = t.split("; ");
+	    for (var n = 0; n < a.length; n++) {
+	        var r = a[n].split("=");
+	        if (r[0] == e)return unescape(r[1])
+	    }
+	    return null
+	}
+	function getCookie(e) {
+	    var t = document.cookie;
+	    var a = t.split("; ");
+	    for (var n = 0; n < a.length; n++) {
+	        var r = a[n].split("=");
+	        if (r[0] == e)return unescape(r[1])
+	    }
+	    return null
+	}
+	function findCookie(e) {
+	    var t = document.cookie;
+	    var a = t.split("; ");
+	    for (var n = 0; n < a.length; n++) {
+	        var r = a[n].split("=");
+	        if (r[0] == e) return true;
+	    }
+	    return false;
+	}
+	function delCookie(e) {
+	    var t = new Date;
+	    t.setTime(t.getTime() - 1);
+	    var a = getCookie(e);
+	    if (a != null)document.cookie = e + "=" + a + "; path=/;expires=" + t.toGMTString()
+	}
+
+	/**
+	 * [getPageName 获取域名路径的文件名]
+	 * @param  无       
+	 * @return 无
+	 */
+	function getPageName(){
+		// var pathName="/wap/index.html";
+		// var pathName="/22324971/bugtrace/bugreports/my_view";
+	    var pathName = window.location.pathname;//当前URL的路径部分
+	    var arr = pathName.split('/');
+	    var pageName = arr[arr.length - 1].split('.')[0];
+	    return pageName;
+	}
+	// console.log(getPageName())
+
+	/**
+	 * [checkLogin 判断是否登录微信端和App,网页端]
+	 * @param  {[]} e [状态]        
+	 * @return 无
+	 */
+	function checkLogin(e) {
+	    if (e == 0) {
+			addCookie("userid", '', 1);
+			addCookie("username", '', 1);
+			addCookie("key", '', 1);
+	    	if(weChat.isWechat()){
+	    		//location.href = WapSiteUrl + "/tmpl/member/wechat_bind.html";
+	    		weChat.wechatLogin();//微信端自动登录
+	    	}else{
+	    		location.href = WapSiteUrl + "/tmpl/member/login.html";//登录页面
+	    	}
+	        return false
+	    } else {
+	        return true
+	    }
+	}
+
+	var weChat = {
+		isWechat : function(){
+		    var ua = window.navigator.userAgent.toLowerCase();
+		    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+		        return true;//微信端
+		    }else{
+		        return false;
+		    }
+		},
+	    wechatLogin : function(){
+			//需要微信自动登录的页面
+			var need_wechat_login = ['member','member_feedback','share_page','rechargecard_add','signin','chat_info','product_detail','chat_list','order_detail',
+			                         'predepositlog_list','redpacket_list','voucher_list','rechargecardlog_list','member_account'];
+			var page_name = getPageName();
+
+			if(this.isWechat() && ($.inArray(page_name, need_wechat_login) >= 0)){
+				var wxopenid = getCookie('wechat_openid');
+				var key = getCookie('key');
+	            if(!getQueryString('key'))
+	            {
+				    if(!key){
+	                    if(!wxopenid){
+	                        var access_code = getQueryString('code');
+	                        if(!access_code){
+	                            var redirect_uri = ApiUrl+'/index.php?ctl=login&act=wechatLogin&client=wechat';
+	                            $.ajax({
+	                                url: ApiUrl+'/index.php?ctl=wechat&act=getWechatConfig',
+	                                type: 'get',
+	                                async: false,
+	                                data: '',
+	                                dataType: 'json',
+	                                success: function(e){
+	                                    var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+e.datas.config.appid+'&redirect_uri='+encodeURIComponent(redirect_uri)+'&response_type=code&scope='+e.datas.config.scope+'&state=' + encodeURIComponent(window.location.href) + '#wechat_redirect';
+	                                    window.location.href = url;
+	                                    return;
+	                                }
+	                            });
+	                        }
+	                    }
+	                }
+				}
+	            else
+	            {	
+	            	if(this.isWechat()){
+						//刷新一次  防止拿不到cookie
+						window.location.reload();
+					}
+	                addCookie('key', getQueryString('key'));
+	                addCookie('username', getQueryString('username'));
+	            }
+			}
+		},
+	}
+
+
+})
+</script>
+</html>

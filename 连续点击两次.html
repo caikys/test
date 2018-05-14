@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击两次</title>
+</head>
+<body>
+	<div id="box">追梦子</div>
+</body>
+<script type="text/javascript">
+	window.onload = function(){
+    var box = document.getElementById("box");
+    box.onclick = function(){
+        alert("我是box1");
+    }
+    box.onclick = function(){
+        box.style.fontSize = "18px";
+        alert("我是box2");
+    }
+}
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	#nav{
+		position: fixed;
+		top: 0;
+		left: 0
+	}
+	.hhh{
+		height: 400px;
+	}
+	.c{
+		background: green;
+		color: red
+	}
+</style>
+<body>
+	<div id="nav">
+		<a id="a11" href="#a1" class="c">书籍目录</a>
+		<a id="a22" href="#a2">作品试读</a>
+		<a id="a33" href="#a3">购买须知</a>
+		<a id="a44" href="#a4">注意事项</a>
+		<a id="a55" href="#a5">用户点评</a>
+	</div>
+	<br /><br />
+	页面结构如下：
+	<div id="a1" class="hhh">书籍目录</div>
+	<div id="a2" class="hhh">作品试读</div>
+	<div id="a3" class="hhh">购买须知</div>
+	<div id="a4" class="hhh">注意事项</div>
+	<div id="a5" class="hhh">用户点评</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.12.0.js"></script>
+<script type="text/javascript">
+	$(function(){
+       	$(window).scroll(function(){
+ 			//为页面添加页面滚动监听事件
+            var wst =  $(window).scrollTop() //滚动条距离顶端值
+			for (i=1; i<6; i++){             //加循环
+			  	if($("#a"+i).offset().top<=wst){ //判断滚动条位置
+				 	$('#nav a').removeClass("c"); //清除c类
+				 	$("#a"+i+i).addClass("c");	//给当前导航加c类
+				}
+			 }
+				 
+	  	})
+	   	$('#nav a').click(function(){
+			$('#nav a').removeClass("c");
+			$(this).addClass("c");
+		});
+	});
+</script>
+</html>

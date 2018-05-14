@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script type="text/javascript">
+	function ScollPostion() {//滚动条位置
+		var t, l, w, h;
+		if (document.documentElement && document.documentElement.scrollTop) {
+			t = document.documentElement.scrollTop;
+			l = document.documentElement.scrollLeft;
+			w = document.documentElement.scrollWidth;
+			h = document.documentElement.scrollHeight;
+		} else if (document.body) {
+			t = document.body.scrollTop;
+			l = document.body.scrollLeft;
+			w = document.body.scrollWidth;
+			h = document.body.scrollHeight;
+		}
+		console.log(t);
+		return { top: t, left: l, width: w, height: h };
+	}
+    // 首次加载页面
+    $(window).on('scroll',function(){
+    	ScollPostion();
+	});
+</script>

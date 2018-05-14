@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+<title>iScroll demo: simple</title>
+
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<!-- <script type="text/javascript">
+var myScroll;
+
+function loaded () {
+    myScroll = new IScroll('#wrapper', { mouseWheel: true });
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+</script> -->
+
+<style type="text/css">
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    -ms-touch-action: none;
+}
+
+body,ul,li {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    font-size: 12px;
+    font-family: ubuntu, helvetica, arial;
+    overflow: hidden; /* this is important to prevent the whole page to bounce */
+}
+
+#top {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    background: #CD235C;
+    padding: 0;
+    color: #eee;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#footer {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    background: #444;
+    padding: 0;
+    border-top: 1px solid #444;
+}
+
+#wrapper {
+    position: absolute;
+    z-index: 1;
+    top: 45px;
+    bottom: 48px;
+    left: 0;
+    width: 120px;
+    background: #ccc;
+    overflow: hidden;
+}
+
+#wrapper ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 120px;
+    text-align: left;
+}
+
+#wrapper li {
+    padding: 0 10px;
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    line-height: 40px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #fff;
+    background-color: #fafafa;
+    font-size: 14px;
+}
+.tab .header li.active{
+    font-weight:bold;color:#f60;
+}
+.content{
+    width: 200px;
+    height: 1000px;
+    margin-left: 120px;
+    margin-top: 45px;
+    background: green;
+}
+</style>
+</head>
+<body>
+    <div id="top"></div>
+    <div class="main">
+        <div id="wrapper">
+            <ul class="header">
+                
+
+            </ul>
+        </div>
+
+        
+    </div>
+    <div id="footer"></div>
+</body>
+<script>
+    $(function(){
+        for(var i=0;i<10;i++){
+            var Li='<li>'+'第'+i+'</li>';
+            $(".header").append(Li);
+            var div='<div class="content">'+'第'+i+'</li>';
+            $(".main").append(div);
+        }
+        $('.content').hide().eq(0).show();
+
+        
+        $('.header li').eq(0).addClass('active');
+
+       
+        $('.header li').click(function(){
+            var idx = $(this).index();
+            $('.content').hide().eq(idx).show();
+
+            $('.header li').removeClass('active').eq(idx).addClass('active');
+        });
+
+
+    });
+</script>
+</html>

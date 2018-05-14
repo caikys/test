@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery滑动加载进度条代码 - 站长素材</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<body>
+
+<div class="votebox" style="margin:120px auto 0 auto">
+	<dl class="barbox">
+		<dd class="barline">
+			<div w="100" style="width:0px;" class="charts"></div>
+		</dd>
+	</dl>
+</div>
+
+
+<script language="javascript">
+function animate(){
+	$(".charts").each(function(i,item){
+		var a=parseInt($(item).attr("w"));
+		$(item).animate({
+			width: a+"%"
+		},30000);
+	});
+}
+animate();
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

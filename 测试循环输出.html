@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试循环输出</title>
+	<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li>2017-12-03</li>
+		<li>2017-12-03</li>
+	</ul>
+</body>
+<script type="text/javascript">
+$("ul li").each(function(){
+	console.log($("ul li").html())//如果这里使用text()会有问题
+})
+</script>
+</html>

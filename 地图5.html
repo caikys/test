@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=vsr75DIo2M5puwSRctEYGcRTFDnBECOd"></script>
+	<title>地图展示</title>
+</head>
+<style>
+	#allmap{
+		width: 800px;height: 600px;
+	}
+</style>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");    // 创建Map实例
+	map.centerAndZoom(new BMap.Point(113.04266,23.010161), 14);  // 初始化地图,设置中心点坐标和地图级别
+	var marker = new BMap.Marker(point);  // 创建标注
+	map.addOverlay(marker);               
+    // map.enableScrollWheelZoom(true);
+    map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
+	map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用 
+</script>

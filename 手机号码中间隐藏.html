@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript" src="js/jquery-1.12.0.js"></script>
+<body>
+	
+</body>
+</html>
+<script type="text/javascript">
+	// 电话号码转换
+	var tel = "18878552787";
+	var reg = /^(\d{3})\d{4}(\d{4})$/;
+	tel = tel.replace(reg, "$1****$2");
+	console.log(tel)
+</script>

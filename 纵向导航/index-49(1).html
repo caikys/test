@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content = "width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>闪耀绘-提货专区</title>
+    <script src="js/jquery-1.12.0.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <style>
+        body {
+            padding: 0; margin: 0 auto;
+        }
+        ul,li{list-style-type: none;margin: 0;padding: 0}
+        img{
+            width: 100%;
+            vertical-align: middle;
+        }
+        .item-classify .goods-item{width: 48%;float: left;background: #fff;margin-bottom: 15px;}
+        .item-classify{background: #F6F6F6;padding: 0px 5px;}
+        .item-classify .goods-item:nth-child(2n+1){margin-right: 3%;}
+        .item-classify .goods-item .gi-image-wrapper{height: 161px;background: #ccc}
+        .item-classify .goods-item .caption .g-price{color: #9b297e}
+        .item-classify .goods-item .caption .g-priced{color: #9b9b9b}
+        .item-classify .goods{overflow: hidden;background: #fff}
+        
+        #navbar-example{margin-top: 95px;z-index: 100}
+        .active{color:red;}
+        .nav li{float: left;width: 25%;text-align: center;}
+        .nav>li>a{padding: 0;display: inline-block;width: 100%;text-align: center;font-size: 16px;}
+        
+        .navbar-default .navbar-nav>.active>a{
+            color: #363636;background: #fff
+        }
+        .navbar-default .navbar-nav>.active>a:after{
+            content: " ";
+            position: absolute;
+            top: 22px;
+            left: 36%;
+            width: 24%;
+            height: 3px;
+            background: #9A287D;
+        }
+        .navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.active>a:hover{background: none}
+
+        .navbar-default .navbar-nav>li>a{
+            color: #363636
+        }
+        .item-classify h4{background: #F6F6F6;color: #373737;}
+        .navbar{margin-bottom: 0;position: fixed;top:0px;left: 0}
+        .container-fluid>.navbar-collapse{margin:0;background: #fff;}
+        .navbar-default{background: none;border: none}
+        .collapse {
+            display: block;
+            width: 185%;
+        }
+        .collapse .nav{
+            width: 100%;padding-top: 9px;
+            padding-bottom: 6px;background: #fff;
+        }
+        .collapse .nav li{
+            float: left;
+            width: 14%;
+            display: inline;
+            font-size: 14px;
+            text-align: center;
+            position: relative;
+        }
+        .container-fluid{overflow: auto;}
+        .navbar-collapse{padding:0;}
+        .navbar-nav{margin: 0}
+    </style>
+</head>
+<body>
+<{require file="public/header.html" }>
+<script>
+    $(function(){
+        var userAgent = navigator.userAgent.toLowerCase();
+        if(userAgent.indexOf("shanyaohui-app") != -1){
+            $(".bar-nav~.content").css('padding-top','44px');
+        }
+    })
+</script>
+<header class="bar bar-nav app-header">
+    <a class="icon icon-left-nav pull-left" href="javascript:history.go(-1);"></a>
+    <h1 class="title">提货区</h1>
+</header>
+<div class="content my-main">
+    <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
+        <div class="container-fluid"> 
+            <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+                <ul class="nav navbar-nav">
+                    <li><a href="#item1">进口美酒</a></li>
+                    <li><a href="#item2">美容美妆</a></li>
+                    <li><a href="#item3">精品面膜</a></li>
+                    <li><a href="#item4">日用品呀</a></li>
+                    <li><a href="#item5">服饰服装</a></li>
+                    <li><a href="#item6">全球保健</a></li>
+                    <li><a href="#item7">彩绘人生</a></li>
+                </ul>
+            </div>
+        </div> 
+    </nav>
+    <div class="item-classify" data-spy="scroll" data-target="#navbar-example" data-offset="0" style="height:500px;overflow:auto; position: relative;top:52px;border:0;">
+        <h4 id="item1">进口美酒</h4>
+        <div class="content-item">
+            <div class="goods">
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 id="item2">美容美妆</h4>
+        <div class="content-item">
+            <div class="goods">
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 id="item3">精品面膜</h4>
+        <div class="content-item">
+            <div class="goods">
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 id="item4">日用品呀</h4>
+        <div class="content-item">
+            <div class="goods">
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 id="item5">服装服饰</h4>
+        <div class="content-item">
+            <div class="goods">
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 id="item6">全球保健</h4>
+        <div class="content-item">
+            <div class="goods">
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 id="item7">彩绘人生</h4>
+        <div class="content-item">
+            <div class="goods">
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-item">
+                    <div class="fav-item">
+                        <div class="gi-image-wrapper">
+                            <a href="">
+                                <img class="g-image" src="#">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5 class="g-name">
+                                <a href="">费雪婴儿游戏桌 多功能双语学习桌早教益智</a>
+                            </h5>
+                            <span class="g-price">
+                                <small>￥5.00</small>
+                            </span>
+                            <span class="g-priced"><small>￥</small>20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    //获取当前索引值对应的元素的宽度
+    $(window).on("touchend", function(){
+        $(".nav li").each(function(i){
+            console.log(i);
+            if(i>3){
+                console.log(i);
+                var width=$(".nav li").eq(i).width();
+                if($(this).hasClass('active')){
+                    var hh=(width*(i));
+                    console.log(hh);
+                    $('.container-fluid').animate({scrollLeft:hh},0);
+                }  
+            }
+            if(i<4){
+                console.log(i);
+                var width=$(".nav li").eq(i).width();
+                if($(this).hasClass('active')){
+                    var hh=-(width*(i));
+                    console.log(hh);
+                    $('.container-fluid').animate({scrollLeft:hh},0);
+                }  
+            }
+            
+
+        })
+    })
+    // var width=$(".nav li").eq(index).width();
+    //通过索引值判断横向滚动条滑动距离
+    /*if(index<2||index==2){
+        $('#wrapper').animate({scrollLeft:0},0);
+    }
+    if(2<index&&index<9){
+        var hh=(width*(index-2));
+        $('#wrapper').animate({scrollLeft:hh},0);
+    }*/
+</script>
+<script>
+/*
+    var get_p = "http://www.shanyaohui.com/index.php/openapi/recommend/get_p";
+        var s = "4311,6084,6083,6082,5639,5641,5646,5640,5718,5716,5526,5527,5862,5863,6075,6077,6076,6078,5523,6079";
+        $.ajax({
+            url:'http://www.shanyaohui.com/index.php/openapi/recommend/get_p?s='+s,
+            type:'get',
+            data:{},
+            dataType:'json',
+            success:function(res){
+                var data = res.data;
+                var html = '';
+                if (res.data == ''){
+                    //不输出内容
+                }else {
+                    for (var i = 0; i<data.length; i++) {
+                        var item = data[i];
+                        html +='<div class="dty"><a href="/m/item-'+ item.product_id +'.html"><img src="'+ item.image_default_id+'"></a>';
+                        html +='<p class="tit">'+ item.name +'</p>';
+                        html +='<p class="price am-fl fl">￥'+ Number(item.price).toFixed(2) +'</p>';
+                        html +='<del class="price am-fl fr">￥'+ Number(item.mktprice).toFixed(2) +'</del>';
+                        html +='</div>';
+                    }
+                    $('.goods').append(html);
+                }
+            },error:function(){
+                console.log('ajax error')
+            }
+        });
+*/
+</script>

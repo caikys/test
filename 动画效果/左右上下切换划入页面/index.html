@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" href="base.css">
+	<link rel="stylesheet" href="nctouch_common.css">
+	<script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="common.js"></script>
+	<style>
+	</style>
+</head>
+<body>
+	<div id="product_detail_spec_html" class="nctouch-bottom-mask up">
+		<div class="nctouch-bottom-mask-bg"></div>
+		<div class="nctouch-bottom-mask-block">
+			<div class="nctouch-bottom-mask-tip"><i></i>点击此处返回</div>
+			<a href="javascript:void(0);" class="nctouch-bottom-mask-close"><i></i></a>
+		</div>
+		<div class="nctouch-bottom-mask-rolling" id="product_roll">
+			<div class="goods-options-stock">
+			</div>
+		</div>
+	</div>
+	<div class="to-up">点击由下到上</div>
+</body>
+<script type="text/javascript">
+	$(function(){
+		$(".to-up").click(function(){
+			$.animationUp({
+	            valve: ".to-up",
+	            scroll: "",
+	            beforeclose: false,
+	            start: function(){
+	                $('body').css({"overflow":"hidden"});
+	            },
+	            before : function(){
+	                
+	            }
+	        });
+		})
+
+	})
+</script>
+</html>

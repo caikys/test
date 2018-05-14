@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <!-- <meta content="telephone=no,email=no" name="format-detection"> -->
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/swiper.min.css">
+    <script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
+    <script src="js/flexible.js"></script>
+    <script type="text/javascript" src="../../js/swiper.min.js"></script>
+
+    <title>再来一波</title>
+</head>
+<style>
+    body{
+            font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;
+    }
+    h4{
+        font-size: .66rem;
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 0.12rem;
+    }
+    .small_title{
+        font-size:.31rem;
+        color: #999;
+        margin-bottom: 0.22rem;
+    }
+
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 32px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .swiper-pagination-bullet {
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+        color:#000;
+        opacity: 1;
+        background: rgba(0,0,0,0.2);
+    }
+    .swiper-pagination-bullet-active {
+        color:#fff;
+        background: #007aff;
+    }
+</style>
+<body>
+    <h4>全球品牌</h4>
+    <p class="small_title">全球低价、极速发货、正品保证</p>
+    <div class="item_big">
+        <div class="big-img">
+            <a href="#">
+                <img src="images/4.jpg">
+            </a>
+        </div>
+        <div class="smallwrap swiper-no-swiping goods_small">
+            <a class="item" href="#">
+                <div class="img"><img src="images/5.jpg"></div>
+                <div
+                    class="goods-detail">
+                    <p class="goods-name">雅诗兰黛（Estee Lauder）特润修护肌透精华露 50ml(ANR抗皱小棕瓶 )</p>
+                    <p class="price">￥698</p>
+                </div>
+            </a>
+            <a class="item" href="#">
+                <div class="img"><img src="images/4.jpg"></div>
+                <div class="goods-detail">
+                    <p class="goods-name">Estee Lauder 雅诗兰黛 DoubleWear持久粉底液SPF10PA++1W2 36#自然色 30ML</p>
+                    <p class="price">￥298</p>
+                </div>
+            </a>
+            <a class="item" href="#">
+                <div class="img"><img src="images/3.jpg"></div>
+                <div class="goods-detail">
+                    <p class="goods-name">Estee Lauder 雅诗兰黛 DoubleWear持久粉底液系列 无瑕清透薄持久粉底</p>
+                    <p class="price">￥296</p>
+                </div>
+            </a>
+            <a class="item" href="#">
+                <div class="img"><img src="images/2.jpg"></div>
+                <div class="goods-detail">
+                    <p class="goods-name">Estee Lauder 雅诗兰黛 晶透沁白双效修颜霜 极净光透白BB霜SPF50+++ 30ML</p>
+                    <p class="price">￥349</p>
+                </div>
+            </a>
+            <a class="item" href="#">
+                <div class="img"><img src="images/1.jpg"></div>
+                <div class="goods-detail">
+                    <p class="goods-name">Estee Lauder 雅诗兰黛 晶透沁白防晒霜SPF50+PA+++ 30ML</p>
+                    <p class="price">￥289</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
+            <div class="swiper-slide">Slide 6</div>
+            <div class="swiper-slide">Slide 7</div>
+            <div class="swiper-slide">Slide 8</div>
+            <div class="swiper-slide">Slide 9</div>
+            <div class="swiper-slide">Slide 10</div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="../dist/js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        paginationBulletRender: function (swiper, index, className) {
+            return '<span class="' + className + '">' + (index + 1) + '</span>';
+        }
+    });
+    </script>
+</body>
+
+</html>

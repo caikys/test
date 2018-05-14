@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<style type="text/css">
+	.login-wrap {
+　　overflow: hidden;
+}
+
+.login-mask {
+　　/* IE6~IE9 */
+　　filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius=100, MakeShadow=false);
+　　-webkit-filter: blur(100px);
+　　-moz-filter: blur(100px);
+　　-ms-filter: blur(100px);
+　　filter: blur(100px);
+　　background-image: url(images/1.jpg);
+　　background-repeat: no-repeat;
+　　background-size: cover;
+　　background-attachment: fixed;
+　　background-position: center;
+　　position: absolute;
+　　z-index: 1;
+}
+
+.login-box {
+　　width: 300px;
+　　height: 400px;
+　　background-color: rgba(255, 255, 255, 0.5);
+　　display: block;
+　　border: 1px solid rgba(183, 183, 183, 0.47);
+　　border-radius: 6px;
+　　position: absolute;
+　　left: 50%;
+　　margin-right: auto;
+　　margin-left: -150px;
+　　margin-top: 10%;
+　　z-index: 2;
+}
+</style>
+<body>
+	<div class="login-wrap">
+　　　　<div class="login-mask"></div>
+　　　　<div class="login-box"></div>
+　　</div>
+
+　　<script>
+　　　　var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+　　　　var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+　　　　$('.login-mask').css("height", h);
+
+　　　　$('.login-mask').css("width", w);
+　　</script>
+</body>
+</html>
+<style>
+
+    .member-msg-list{
+        background: #f6f6f6;
+    }
+    .my-main{
+        background: #f6f6f6;padding-top: 96px !important;
+    }
+    .member-msg-list li{
+        width: 100%;height: 92px;margin-top: 11px;background: #fff;
+    }
+    .member-msg-list li a{
+        display: inline-block;width:100%;height: 92px;
+    }
+    .member-msg-list li .img-icon{
+        width: 25%;height: 90px;display: table-cell; vertical-align:middle;text-align:center;display: block; 
+    }
+    .member-msg-list li .img-icon img{
+        display: inline-block;width: 58px;height: 58px;vertical-align:middle; margin-top: 16px;
+    }
+    .member-msg-list li .media-body{
+        width: 75%;padding-right: 5%;
+    }
+    .member-msg-list li .img-icon,.member-msg-list li .media-body{
+        float: left;
+    }
+    .media-body p{
+        margin: 0;width: 100%;
+    }
+    .media-body .body-title{
+        color: #4d4d4d;font-size: 16px;font-weight: bolder;padding-top: 15px;
+    }
+    .media-body .body-cont{
+        white-space:nowrap;text-overflow:ellipsis; -o-text-overflow:ellipsis;overflow:hidden;line-height: 37px;height: 37px;
+    }
+</style>
+<{if $msg_list}>
+<ul class="table-view member-msg-list">
+    <li>
+        <a href="#">
+            <div class="img-icon"><img src="/themes/mobile/shanyaohui/images/mynews.png" alt=""></div>
+            <div class="media-body">
+                <p class="body-title">活动精选</p>
+                <p class="body-cont">为了回馈新老客户对闪耀绘的支持，特地举办。。。</p>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <div class="img-icon"><img src="/themes/mobile/shanyaohui/images/myact.png" alt=""></div>
+            <div class="media-body">
+                <p class="body-title">活动精选</p>
+                <p class="body-cont">为了回馈新老客户对闪耀绘的支持，特地举办。。。</p>
+            </div>
+        </a>
+    </li>
+    <{foreach from=$msg_list item=msg}>
+    <li class="table-view-cell media">
+        <a href="<{link app=b2c ctl=mobile_member act=message agrs0=$msg.msg_id args1=$msg.msg_id}>" class="navigate-right">
+            <span class="pull-left fa <{if $msg.status!='sent'}> fa-envelope-o<{else}>fa-envelope<{/if}>"></span>
+            <div class="media-body">
+                <{$msg.subject}>
+                <p>
+                    <{$msg.createtime|cdate}>
+                </p>
+                <p>
+                    <{$msg.content|replace:"\n":''|replace:"\t":''|cut:90:'...'}>
+                </p>
+            </div>
+        </a>
+    </li>
+    <{/foreach}>
+</ul>
+<div class="content-morepage content-padded">
+    <{morepage data=$pager}>
+</div>
+<script type="text/javascript">
+//翻页
+var current_page = 1;
+$('.btn-morepage').on('touchend',function(e){
+    e.stopPropagation();
+    var btn = $(this);
+    btn.find('.fa-circle-o-notch').removeClass('hidden');
+    var data_morepage = btn.attr('data-morepage');
+    data_morepage = $.parseJSON(data_morepage);
+    var new_page = $('<div></div>');
+    new_page.load(data_morepage.link.replace(data_morepage.token,++current_page)+" .member-msg-list",function(){
+        new_page.find('.member-msg-list .table-view-cell').appendTo($('.member-msg-list'));
+        btn.find('.fa-circle-o-notch').addClass('hidden');
+    });
+    if(current_page == data_morepage.total){
+        btn.remove();
+    }
+    return false;
+});
+</script>
+<{else}>
+<div class="content-splash">
+    <i class="fa fa-inbox fa-5x"></i>
+    <p>
+        暂无
+    </p>
+</div>
+<{/if}>

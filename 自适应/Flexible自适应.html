@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<meta charset="utf-8"> 
+	<meta content="yes" name="apple-mobile-web-app-capable"> 
+	<meta content="yes" name="apple-touch-fullscreen"> 
+	<meta content="telephone=no,email=no" name="format-detection"> 
+	<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> 
+	<link rel="apple-touch-icon" href="favicon.png"> 
+	<link rel="Shortcut Icon" href="favicon.png" type="image/x-icon"> 
+	<title>再来一波</title> 
+</head> 
+<body> 
+	<div class="item-section" data-repeat="sections"> 
+		<div class="item-section_header"> 
+			<h2><img src="{brannerImag}" alt=""></h2> 
+		</div> 
+		<ul> 
+			<li data-repeat="items" class="flag" role="link" href="{itemLink}"> 
+				<a class="figure flag-item" href="{itemLink}"><img src="{imgSrc}" alt=""></a> 
+				<div class="figcaption flag-item"> 
+					<div class="flag-title">
+						<a href="{itemLink}" title="">{poductName}</a>
+					</div> 
+					<div class="flag-price">
+						<span>双11价</span>
+						<strong>¥{price}</strong>
+						<small>({preferential})</small>
+					</div> 
+					<div class="flag-type">{activityType}</div> 
+					<a class="flag-btn" href="{shopLink}">{activeName}</a> 
+				</div> 
+			</li> 
+		</ul>
+	</div>
+</body> 
+</html>
+<script type="text/javascript">
+	//define data v
+	var pageData = { 
+		sections:[{ 
+			"brannerImag":"http://xxx.cdn.com/B1PNLZKXXXXXaTXXXXXXXXXXXX-750-481.jpg", 
+			items:[{ 
+				"itemLink": "##", 
+				"imgSrc": "https://placeimg.com/350/350/people/grayscale", 
+				"poductName":"Carter's1年式灰色长袖连体衣包脚爬服全棉鲸鱼男婴儿童装115G093", 
+				"price": "299.06", 
+				"preferential": "满400减100", 
+				"activityType": "1小时内热卖5885件", 
+				"shopLink":"##", 
+				"activeName": "马上抢！" 
+			} 
+				.... 
+			}] 
+		}] 
+	}
+</script>

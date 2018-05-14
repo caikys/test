@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf8">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui">
+<title>首页</title>
+<style>
+html, body{ width: 100%; height: 100%; padding: 0; margin: 0;}
+.product-pop{ text-align: center;}
+.pimg{ width: 100%; position: relative;}
+.pimg img{ width: 100%;}
+.pimg img.ensure{ width: initial; position: absolute; top: 0; left: 0;}
+</style>
+<script src="__STATIC__/js/jquery.min.js"></script>
+<script src="__STATIC__/js/html2canvas.js"></script>
+</head>
+<body>
+	<div id="content">
+		<div class="product-pop" id="code" style="text-align: center;">
+			<div class="logo-title">
+				<img src="http://192.168.0.172/themes/mobile/shanyaohui/images/logo-011.png" alt="">
+			</div>
+			<div class="pimg" style="width: 100%; position: relative;">
+				<img src="//statics.shanyaohui.com/50/20/22029e701cc5.jpg@940w_1112h_100Q.jpg?88319_H800_W800" class="pro">
+				<img src="http://192.168.0.172/themes/mobile/shanyaohui/images/ensure.png" class="ensure">
+			</div>
+			<div class="product-intr">
+				<div class="intr-left">
+					<h4 class="info">
+						创业区产品 纯情--乐倍丽玫瑰花高档雨伞晴雨两用创意时尚雨伞折叠女士小清新太阳伞<br>
+					</h4>
+					<p class="brief"></p>
+					<p class="pop-price">￥128.00</p>
+					<p class="pop-priced">￥199.00</p>
+				</div>
+				<div class="intr-right">
+					<img src="http://192.168.0.172/public/qrcode/8d4f0c9aaab91e40fe604a8cb8aca056.png">
+				</div>
+			</div>
+			<div class="more">
+				<h4>更多奖励</h4>
+				<p>1.已报备的店主(金闪)可享受每一单10元的补贴。</p>
+				<p>2.加入创业计划，更可免费领取超高补贴。</p>
+				<span>详情请咨询400-633-2933 。</span>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			html2canvas(document.querySelector("#code"), {
+				allowTaint: true,
+				onrendered : function(canvas) {
+					console.log(canvas)
+					$('#content').append(canvas);
+				}
+			})
+		})
+	</script>
+</body>
+</html>

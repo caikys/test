@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .parent{
+        width: 500px;
+        height: 200px;
+        display: -webkit-box;
+        -webkit-box-orient: horizontal;/* 虽然默认的排列方式是水平的，但是为了区分起见，加上该属性 */
+    }
+    .child-one{
+        background: lightblue;
+    }
+    .child-two{
+        background: lightgray;
+    }
+    .child-three{
+        background: lightgreen;
+        /* 加了固定高度和边距 */
+        width: 150px;
+        margin: 0 15px;
+
+    }
+</style>
+<body>
+    <div style="display: -webkit-box;-webkit-box-pack: center;border: 1px solid #000">
+    <div class="parent">
+        <div class="child-one">1</div>
+        <div class="child-two">2</div>
+        <div class="child-three">3;width:150px;</div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<!-- <script src="js/progressBar.js"></script> -->
+</head>
+<style type="text/css">
+	.barbox{
+		height: 15px;
+	    line-height: 15px;
+	    text-align: center;
+	    color: rgb(255, 255, 255);
+	}
+	.barbox dd{
+		float: left;
+	    width: 200px;
+	    background: rgb(223, 223, 223);
+	    height: 15px;
+	    overflow: hidden;
+	    display: inline;
+	    position: relative;
+	    border-radius: 8px;
+	}
+	.barline{
+
+	}
+	.charts{
+		width: 100%;
+	    background: red;
+	    height: 15px;
+	    border-radius: 8px;
+	}
+	.barline span{
+		line-height: 15px;
+	    text-align: center;
+	    color: rgb(255, 255, 255);
+	}
+</style>
+<body>
+	<div class="div" w="100"></div>
+</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+	var div=$(".div");//进度条要插入的地方
+	var barb=function(){
+		var width=div.attr('w');
+		var barbox='<dl class="barbox"><dd class="barline"><div w="'+width+'" class="charts" style="width:0px"><span></span></div></dd></dl>';
+		div.append(barbox);
+	}
+	var amimeat=function(){
+		var wi=parseInt($(".charts").attr("w"));
+		$(".charts").animate(
+		{
+			width: wi+"%"
+		},3000,function(){//一天内走完
+			$(this).children('span').html(wi+"%");
+		});
+	}
+	barb();
+	amimeat();
+})
+
+</script>

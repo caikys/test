@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script type="text/javascript">
+	// 还有就是上拉加载更多这一功能，用到了MUI框架，后来发现移动端的页面点击href链接不跳转，发现原因是MUI框架默认不响应tap事件，解决方法为在mui.init({});中的上拉加载所对应的方法中，添加如下代码：
+	mui('body').on('tap','a',function(){document.location.href = this.href;});
+</script>

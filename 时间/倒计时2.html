@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="js/jquery-1.8.3.min.js"></script>
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180%;background:#fff;}
+.timerbg{background:url(images/bg.png) no-repeat;height:60px;width:980px;margin:20px auto;}
+.timerbg div{float:right;font-size:16px;margin:24px 0 0 0;font-weight:800;text-align:left;width:335px;font-family:"微软雅黑","宋体";}
+.timerbg div strong{font-size:28px;margin:0 13px;color:#D6000F;font-family:Arial;}
+#daoend{margin:24px 0 0 0;width:324px;color:#D6000F;font-size:22px;}
+</style>
+</head>
+
+<body>
+
+    <div class="timerbg">
+        <div id="daoend" style="display:none;">本次活动已结束。</div>
+        <div id="dao"><strong id="RemainD"></strong>天<strong id="RemainH"></strong>时<strong id="RemainM"></strong>分<strong id="RemainS"></strong>秒</div>
+    </div>
+    
+    <script type="text/javascript">
+    var startTime = new Date();
+    //定义参数可返回当天的日期和时间
+    startTime.setFullYear(2017, 6, 14);
+    //调用设置年份
+    startTime.setHours(23);
+    //调用设置指定的时间的小时字段
+    startTime.setMinutes(59);
+    //调用设置指定时间的分钟字段
+    startTime.setSeconds(59);
+    //调用设置指定时间的秒钟字段
+    startTime.setMilliseconds(999);
+    //调用置指定时间的毫秒字段
+    var EndTime=startTime.getTime();
+    //定义参数可返回距 1970 年 1 月 1 日之间的毫秒数
+    function GetRTime(){
+    //定义方法
+        var NowTime = new Date();
+        //定义参数可返回当天的日期和时间
+        var nMS = EndTime - NowTime.getTime();
+        //定义参数 EndTime减去NowTime参数获得返回距 1970 年 1 月 1 日之间的毫秒数
+        var nD = Math.floor(nMS/(1000 * 60 * 60 * 24));
+        //定义参数 获得天数
+        var nH = Math.floor(nMS/(1000*60*60)) % 24;
+        //定义参数 获得小时
+        var nM = Math.floor(nMS/(1000*60)) % 60;
+        //定义参数 获得分钟
+        var nS = Math.floor(nMS/1000) % 60;
+        //定义参数 获得秒钟
+        if (nMS < 0){
+        //如果秒钟大于0
+            $("#dao").hide();
+            //获得天数隐藏
+            $("#daoend").show();
+            //获得活动截止时间展开
+        }else{
+        //否则
+           $("#dao").show();
+           //天数展开
+           $("#daoend").hide();
+           //活动截止时间隐藏
+           $("#RemainD").text(nD);
+           //显示天数
+           $("#RemainH").text(nH);
+           //显示小时
+           $("#RemainM").text(nM);
+           //显示分钟
+           $("#RemainS").text(nS); 
+           //显示秒钟
+        }
+    }
+    
+    $(document).ready(function () {
+    //定义方法
+        var timer_rt = window.setInterval("GetRTime()", 1000);
+        //定义参数 显示出GetRTime()方法 1000毫秒以后启动
+    });
+    </script>
+    
+</body>
+</html>

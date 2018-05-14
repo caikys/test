@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+.banner{
+	width: 100%;
+	position: relative;
+	height: 460px;
+}
+.banner ul{
+	position:absolute; 
+	left:0; 
+	top:0; 
+	width:10000px;
+}
+.ba_slider{ 
+	width:1100px; 
+	height:460px; 
+	position:absolute; 
+	overflow: hidden; 
+	left: 50%; 
+	margin-left: -960px; 
+}
+.ba_slider ul{ 
+	position:relative; 
+	width: 100000px; 
+}
+.ba_slider ul li{ 
+	position: relative;
+	float: left; 
+}
+.ba_slider img{ 
+	width:1100px; 
+	height:460px; 
+}
+.ba_slider ol{ 
+	position:absolute; 
+	left:50%; 
+	bottom:10px; 
+	overflow:hidden; 
+	margin-left:-220px; 
+}
+.ba_slider ol li{ 
+	width:100px;
+	height:6px; 
+	background:rgb(85,85,85); 
+	float:left; margin-right:10px; 
+}
+.ba_slider ol li.on{ 
+	background:#fff; 
+}
+</style>
+</head>
+<body>
+<div class="banner">
+	<div class="ba_slider">
+		<ul>
+		    <li>
+				<a href="javascript:;"> 
+			    	<img src="http://scimg.jb51.net/allimg/140708/11-140FQ53531Q9.jpg" alt="" />
+		      	</a>
+		    </li>
+		    <li>
+		   		<a href="javascript:;"> 
+		   	 		<img src="http://sc.jb51.net/uploads/allimg/140520/10-140520212515A9.jpg" alt="" />
+		    	</a>
+		    </li>
+		</ul>
+		<ol>
+		   <li class="on">1</li>
+		   <li>2</li>
+		</ol>
+	</div>
+ </div>
+</body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+<script>
+cBanner();
+function cBanner(){
+	var iNow=0; //初始化自定义值
+	var w = $('.ba_slider ul img').width(); //获取图片宽度
+	function bTimer(){
+		//定时器
+		clearInterval(b_timer);
+		//先关后开
+		var b_timer = setInterval(function(){ 
+			iNow++; 
+			if(iNow == $('.ba_slider ul li').length){ //判断是否最后一张图片
+				iNow=0;
+			}
+			tab(); //当前分页器高亮
+			$('.ba_slider ul').eq(0).animate({ //ul运动距离
+				left:-iNow*w
+			},1000);
+	 
+		},2000); //定时器时间
+		$('.ba_slider').mouseover(function(){ //鼠标移入关闭定时器
+			clearInterval(b_timer);
+		});
+	}
+	bTimer(); //定时器函数调用
+	$('.ba_slider').mouseout(function(){
+		//鼠标移出调用定时器
+		bTimer();
+	});
+	$('ol li').click(function (){
+		//点击分页器选择图片
+		iNow=$(this).index();
+		//iNow赋值为当前分页器索引值
+		$('.ba_slider ul').eq(0).animate({
+		left:-iNow*w
+		},1000);
+		tab();
+	});
+	function tab(){
+	//分页器高亮效果
+		$('ol li').removeClass('on');
+		$('ol li').eq(iNow).addClass('on');
+	}
+};
+</script>
+</html>

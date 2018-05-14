@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<!-- <script type="text/javascript" src="js/jquery-1.12.0.js"></script> -->
+<body>
+	
+</body>
+<script type="text/javascript">
+	var str = '{"name":"小明","age":18}';
+	var json1 = JSON.parse(str);
+	var json2 = eval("(" + str + ")");
+	var json3 = (new Function("return " + str))();
+	console.log(json1);
+
+
+	// 但是如果使用JSON.parse()方法来转化json对象，需要注意的坑点是什么？
+
+	// 1.字符串的数据格式
+
+	// 以上举例 str = '{"name":"小明","age":18}'; 属性name和age都用双引号引住，
+
+	// 有的人可能会习惯写成对象形式的字符串，如：str = '{name:"小明",age:18}';
+
+	// 结果使用JSON.parse()来转化会报错，因为使用JSON.parse需严格遵守JSON规范。
+
+	// 2.单引号与双引号
+
+	// 我们看到一开始的举例中 var str = '{"name":"小明","age":18}'; 使用单引号来套双引号，如果反过来写呢，如：var str = "{'name':'小明', 'age':18}";（相信也不少人习惯用双引号套单引号）
+
+	// 结果使用JSON.parse()来转化也会报错
+
+	// 最后总结来说，如果使用JSON.parse()方法来转化成json对象的数据格式的话，需要注意的是被转化的字符串里面的属性要使用引号，并且总体是单引号套双引号的方式。
+	 
+
+	// 当然，如果你使用eval()或者new Function()的方式来转化，那就完全可以忽略上述的这两点需要注意的地方～(￣▽￣～)(～￣▽￣)～哈哈
+
+	// 附：
+
+	// eval() 函数可将字符串转换为代码执行，并返回一个或多个值
+
+	// eval调用时，实例为eval( "( javascript代码 )" )
+
+	// var str = "function(){alert('a');}“;
+
+	// str = eval("("+str+")");
+
+	// str();
+
+	// eval()的返回值
+
+	// eval()的返回值遵循以下规则：
+
+	// 1.如果eval()的参数不是字符串，那么eval()将直接返回参数。
+
+	// 2.如果eval()的参数是字符串，那么eval()将这个字符串解析成代码后进行执行，并返回最后一行代码执行的结果。
+
+	// 3.如果字符串无法解析成合法的代码，eval()将抛出SyntaxError错误。
+</script>
+</html>

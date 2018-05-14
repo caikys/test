@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>进度条3</title>
+	<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<style type="text/css">
+	.progressbar {
+	    width: 200px;
+	    border-radius: 50px;
+		position: relative;
+		background-color: #EEEEEE;
+		box-shadow: inset 0px 1px 1px rgba(0,0,0,.1);
+	}
+
+	.proggress{
+		height: 8px;
+		width: 10px;
+		border-radius: 50px;
+		background-color: #f1c40f;
+	}
+
+	.percentCount{
+		float:right;
+		margin-top: 10px;
+		clear: both;
+		font-weight: bold;
+		font-family: Arial
+	}
+</style>
+<body>
+		<h3 class="center">控制进度条的圆角</h3>
+		<div id="progressbar4"></div>
+</body>
+</html>
+<script type="text/javascript">
+	(function($){
+		$.fn.LineProgressbar = function(options){
+			var options = $.extend({
+				percentage : null,
+				ShowProgressCount: true,
+				duration: 1000000,
+				// Styling Options
+			},options);
+
+			return this.each(function(index, el) {
+				// Markup
+				$(el).html('<div class="progressbar"><div class="proggress"></div><div class="percentCount"></div></div>');
+
+				// Progressing
+				$(".proggress").animate(
+					{
+						width: options.percentage + "%"
+					},
+					{	
+						step: function(n) {
+							if(options.ShowProgressCount){
+								$(el).find(".percentCount").text("已售"+Math.round(n) + "%");
+							}
+						},
+						duration: options.duration
+					}
+				);
+			});
+		}
+	})(jQuery);
+	$(function(){
+		$('#progressbar4').LineProgressbar({
+		  	percentage: 100,
+		});
+	})
+</script>

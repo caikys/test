@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时间差</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	//结束时间  
+	end_str = ("2014-01-01 10:15:00").replace(/-/g,"/");//一般得到的时间的格式都是：yyyy-MM-dd hh24:mi:ss，所以我就用了这个做例子，是/的格式，就不用replace了。
+	console.log(end_str);
+	var end_date = new Date(end_str);//将字符串转化为时间 
+	console.log(typeof end_date) 
+	//开始时间  
+	sta_str = ("2014-01-01 10:15:00").replace(/-/g,"/");  
+	var sta_date = new Date(sta_str);  
+	var num = (end_date-sta_date)/(1000*3600*24);//求出两个时间的时间差，这个是天数  
+	var days = parseInt(Math.ceil(num));//转化为整天（小于零的话剧不用转了）
+</script>
+</html>

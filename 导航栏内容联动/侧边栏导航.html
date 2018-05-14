@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>侧边栏</title>
+</head>
+<style type="text/css">
+	* {
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+
+	html {
+	    -ms-touch-action: none;
+	}
+
+	body,ul,li {
+	    padding: 0;
+	    margin: 0;
+	    border: 0;
+	}
+	header{
+		width: 100%;
+		height: 55px;
+		background: #eb0258;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 10;
+	}
+	footer{
+		width: 100%;
+		height: 55px;
+		background: #eb0258; 
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		z-index: 10;
+	}
+	.main{
+		width: 100%;
+		height: 1000px;
+		margin-top: 55px;
+		background: green;
+	}
+	#left{
+		position: fixed;
+		top: 55px;
+		left: 0;
+		width: 30%;
+		background: #7aef41;
+		z-index: 5;
+	}
+	#left li{
+		width: 100%;
+	    height: 50px;
+	    text-align: center;
+	    line-height: 40px;
+	    
+	}
+	.right{
+		width: 70%;
+		background: #419fef;
+	}
+	.right{
+		float: right;
+	}
+	.right .content{
+		font-size: 20px;
+	}
+	#left li.active{
+	    font-weight:bold;
+	    background:#f60;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<body>
+	<header>头部</header>
+	<div class="main">
+		<ul id="left" style="transform: translate(0px, -10px)">
+			<li>选项1</li>
+            <li>选项2</li>
+            <li>选项3</li>
+            <li>选项4</li>
+            <li>选项5</li>
+            <li>选项6</li>
+            <li>选项7</li>
+            <li>选项8</li>
+            <li>选项9</li>
+            <li>选项10</li>
+            <li>选项11</li>
+            <li>选项12</li>
+            <li>选项13</li>
+            <li>选项14</li>
+            <li>选项15</li>
+            <li>选项16</li>
+            <li>选项17</li>
+		</ul>
+		<div class="right">
+			<div class="content">第一</div>
+	        <div class="content">第二</div>
+	        <div class="content">第三</div>
+	        <div class="content">第四</div>
+	        <div class="content">第五</div>
+	        <div class="content">第六</div>
+	        <div class="content">第七</div>
+	        <div class="content">第八</div>
+	        <div class="content">第九</div>
+	        <div class="content">第十</div>
+	        <div class="content">第十一</div>
+	        <div class="content">第十二</div>
+	        <div class="content">第十三</div>
+	        <div class="content">第十四</div>
+	        <div class="content">第十五</div>
+	        <div class="content">第十六</div>
+	        <div class="content">第十七</div>
+		</div>
+	</div>
+	<footer>底部</footer>
+</body>
+<script>
+    $(function(){
+        /*
+            tab选项卡
+                1)隐藏除第一个以外的所有.content
+                2)高亮显示第一个tab标签
+                3）点击标签，切换相应的内容
+         */
+        
+        // 筛选eq()
+        // 隐藏所有的.content
+
+        // 1)隐藏除第一个以外的所有.content
+        $('.content').hide().eq(0).show();
+
+        // 2)高亮显示第一个tab标签
+        $('#left li').eq(0).addClass('active');
+
+        // 3）点击标签，切换相应的内容
+        $('#left li').click(function(){
+            // 如何获取当前索引值
+            // index()
+            // 在此处this表示当前dom节点
+            // 原生转jquery：$(dom)
+            // jquery转原生：
+
+            // 获取当前li所在的索引值
+            var idx = $(this).index();
+            $('.content').hide().eq(idx).show();
+
+            $('#left li').removeClass('active').eq(idx).addClass('active');
+        });
+
+        var startX = startY = endX = endY = 0;
+	    var dom = document.getElementById('left');
+	    //touchStart事件
+	    dom.addEventListener('touchstart',function(event){
+	        var touch = event.targetTouches[0];
+	        startX = touch.pageX;
+	        startY = touch.pageY;
+	        console.log('开始滑动纵坐标'+startY);
+	    },false);
+	    //touchmove事件
+	    dom.addEventListener('touchmove',function(event){
+	        var touch = event.targetTouches[0];
+	        endX = touch.pageX;
+	        endY = touch.pageY;
+	        var dy=endY - startY;
+	        var fy=document.getElementById('left').style.transform.replace(/[^0-9\-,]/g,'').split(',');
+	        var s=parseInt(fy[1]);
+	        console.log('s的值'+s);
+	        var y=dy+s;
+	        if(-318<y&&y<0){
+		        $('#left').css("transform","translate(0px,"+y+"px)");
+	        }
+	        
+	    },false);
+	    //touchend事件
+	    dom.addEventListener('touchend',function(event){
+	        
+	    },false);
+
+
+    });
+</script>
+</html>

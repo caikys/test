@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jquery进度条特效 - 站长素材</title>
+  
+
+  <meta name="viewport" content="width=device-width">
+  
+  <link rel="stylesheet" href="stylesheets/ui.css">
+  <link rel="stylesheet" href="stylesheets/ui.progress-bar.css">
+  <link media="only screen and (max-device-width: 480px)" href="stylesheets/ios.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+  
+  <div id="container">
+    
+    <div class="content">
+      <h1>Pure CSS Progress Bar</h1>
+    </div>
+
+    
+    <!-- Progress bar -->
+    <div id="progress_bar" class="ui-progress-bar ui-container">
+      <div class="ui-progress" style="width: 79%;">
+        <span class="ui-label" style="display:none;">Processing <b class="value">79%</b></span>
+      </div>
+    </div>
+    <!-- /Progress bar -->
+    
+    <div class="content" id="main_content" style="display: none;">
+      <p>
+        Inspired by a shot from Jonno Riekwel, I knocked up a quick Progress Bar in Photoshop on a friday afternoon before heading to the pub.
+      
+        Then a couple of people suggested implementing it with CSS.
+      </p>
+      
+      <p>
+        So I did.
+      </p>
+      
+      <p>
+        Enjoy,<br>
+        
+      </p>
+      
+      <p class="small">
+        This is best viewed in a Webkit based browser, Chrome is good*, also Safari. Opera 10.62+ looks ok, however it doesn't support gradients. Firefox and IE 9 kind of work (no stripe animation). IE 8, 7 and 6 do not support rounding, shadows, animation, or much else for that matter, in fact they are pretty bloody useless at being browsers.
+      </p>
+      
+      <p class="small">
+        * There is a known issue with Chrome for Windows and Linux which will cancel out the rounded corners due to the use of inset box shadow. Because I use a Mac this is not regarded as an issue.
+      </p>
+            
+    </div>
+    
+  </div>
+
+  
+  <script src="javascripts/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="javascripts/progress.js" type="text/javascript" charset="utf-8"></script>
+<div style="text-align:center;clear:both">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. </p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

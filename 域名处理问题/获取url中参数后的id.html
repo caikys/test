@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var url="http://syhmall.local.com/wap/tmpl/product_detail.html?goods_id=802";
+	function getQueryString(e) {
+	    var t = new RegExp("(^|&)" + e + "=([^&]*)(&|$)");
+	    // var a = window.location.search.substr(1).match(t);
+	    if (a != null)return a[2];
+	    return ""
+	}
+	console.log(getQueryString(goods_id));//输出802
+</script>
+</html>

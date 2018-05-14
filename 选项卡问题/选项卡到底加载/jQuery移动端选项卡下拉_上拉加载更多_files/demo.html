@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>tab加载多个数据</title>
+    <style>
+    *{
+        margin: 0;
+        padding:0;
+        -webkit-tap-highlight-color:rgba(0,0,0,0);
+        -webkit-text-size-adjust:none;
+    }
+    html{
+        font-size:10px;
+    }
+    body{
+        background-color: #f5f5f5;
+        font-size: 1.2em;
+    }
+    .tab{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        height: 44px;
+        line-height: 44px;
+        border-bottom: 1px solid #ff3c3c;
+        background-color: #eee;
+    }
+    .tab .item{
+        display: block;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        width: 100%;
+        font-size: 14px;
+        text-align: center;
+        color: #333;
+        text-decoration: none;
+    }
+    .tab .cur{
+        height: 42px;
+        border-bottom: 2px solid #ff3c3c;
+        color: #ff3c3c;
+    }
+    .content{
+        background-color: #fff;
+    }
+    .content .item{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align:center;
+        -webkit-box-align:center;
+        box-align:center;
+        -webkit-align-items:center;
+        align-items:center;
+        padding:3.125%;
+        border-bottom: 1px solid #ddd;
+        color: #333;
+        text-decoration: none;
+    }
+    .content .item img{
+        display: block;
+        width: 40px;
+        height: 40px;
+        border:1px solid #ddd;
+    }
+    .content .item h3{
+        display: block;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        width: 100%;
+        max-height: 40px;
+        overflow: hidden;
+        line-height: 20px;
+        margin: 0 10px;
+        font-size: 1.2rem;
+    }
+    .content .item .date{
+        display: block;
+        height: 20px;
+        line-height: 20px;
+        color: #999;
+    }
+    .opacity{
+        -webkit-animation: opacity 0.3s linear;
+        animation: opacity 0.3s linear;
+    }
+    @-webkit-keyframes opacity {
+        0% {
+            opacity:0;
+        }
+        100% {
+            opacity:1;
+        }
+    }
+    @keyframes opacity {
+        0% {
+            opacity:0;
+        }
+        100% {
+            opacity:1;
+        }
+    }
+    </style>
+    <link rel="stylesheet" href="./dropload.css">
+</head>
+<body>
+<div class="tab">
+    <a href="javascript:;" class="item">菜单一</a>
+    <a href="javascript:;" class="item cur">菜单二</a>
+</div>
+<div class="content">
+    <div class="lists" style="display: none;"><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#1"><img src="./CgQI0lYEBwWAQIvJAAFyostaOYY12501_80x80.jpg" alt=""><h3>Apple 苹果 iPhone 6s Plus (A1699) 16G 玫瑰金色 移动联通电信4G 全网通手机</h3><span class="date">2015-12-01</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#2"><img src="./CgQIz1ZNQWeALuYuAASH8T5MJzY38001_80x80.jpg" alt=""><h3>Letv 乐视1S 乐1S 移动联通双4G 双卡双待 16GB 金</h3><span class="date">2015-12-02</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#3"><img src="./ChEi1lZhlgSAEES9AAIPUw3996808600_80x80.jpg" alt=""><h3>NOKIA/诺基亚 2610 nokia 2610 经典诺基亚直板手机 学生备用老人手机 诺基亚低端功能机</h3><span class="date">2015-12-03</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#4"><img src="./ChEi2VZpRZCAeyz-AAP2yE5HMTQ17001_80x80.jpg" alt=""><h3>华为 Mate8 NXT-TL00 3GB+32GB版 移动定制 月光银</h3><span class="date">2015-12-04</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#5"><img src="./CgQI0FY3GNuAeKARAARTi1sTc0E99401_80x80.jpg" alt=""><h3>锤子 坚果 32GB 红色 移动联通4G手机 双卡双待</h3><span class="date">2015-12-05</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#6"><img src="./CgQI0lX45JWANx7NAANWUytnWfY51201_80x80.jpg" alt=""><h3>华为荣耀7i ATH-AL00 3G内存增强版 移动联通电信4G 沙滩金 双卡双待</h3><span class="date">2015-12-06</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#7"><img src="./ChEi1FX_oHWAWJYUAAL4rKvikTE54401_80x80.jpg" alt=""><h3>小米 红米2A 增强版 白色 16G 移动4G手机 官网版 双卡双待</h3><span class="date">2015-12-07</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#8"><img src="./CgQIzVQj87GAZ2-bAAMyoIZt8v863301_80x80.jpg" alt=""><h3>Samsung 三星 Galaxy Note4 N9108V 移动4G手机 幻影白</h3><span class="date">2015-12-08</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#9"><img src="./ChEbu1T4HVeASjwEAAGHikpYgyQ10901_80x80.jpg" alt=""><h3>HTC Desire 826T 魔幻蓝 移动4G手机 双卡双待</h3><span class="date">2015-12-09</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#10"><img src="./ChEbulTYbhyAY_DmAAGmsWjdGgY32601_80x80.jpg" alt=""><h3>华为 荣耀畅玩4X Che2-UL00 联通标配版4G手机 双卡双待双通 白色</h3><span class="date">2015-12-10</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#11"><img src="./CgQI01Zb6yGAL2SWAAWXMCmZ7gk97001_80x80.jpg" alt=""><h3>vivo X6A 全网通4G手机 4GB+64GB 双卡双待 金色</h3><span class="date">2015-12-11</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#12"><img src="./ChEi3FZf6C-AIC74AAOQYliXK7g41100_80x80.jpg" alt=""><h3>金来 X7 5.5英寸大屏 移动联通双4G手机 智能指纹识别 双卡双待土豪金16GB非合约机官方标配</h3><span class="date">2015-12-12</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#13"><img src="./CgQI0FaOLTqAYj5tAAJ-GtDx_Fk90800_80x80.jpg" alt=""><h3>Haier海尔 M351L 中文超大按键 一键呼救超大音量弧面老人手机黑色0MB非合约机官方标配</h3><span class="date">2015-12-13</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#14"><img src="./ChEbu1Zw_n6ALMiLAAILdjwAoqw20801_80x80.jpg" alt=""><h3>Samsung 三星 Galaxy A7(2016) A7100 白色 16G 移动联通电信4G手机 双卡双待</h3><span class="date">2015-12-14</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#15"><img src="./CgQI01ZYI-KAMMwzAAFW6ZSR3Tg50500_80x80.jpg" alt=""><h3>Haier海尔 M352L 移动/联通2G 翻盖老人机 2.4英寸屏老人手机 长待机老年机金色0MB非合约机官方标配</h3><span class="date">2015-12-15</span></a></div>
+    <div class="lists"><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#1"><img src="./CgQI0lQ3umiAYat_AAMa5tG_TXY20001_80x80.jpg" alt=""><h3>Apple 苹果 iPhone 6 Plus 16G 4G手机 金色 公开版（三网通用A1524)</h3><span class="date">2015-01-01</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#2"><img src="./CgQIzlSrnfaAHAzvAAJ8k2SN73Q20901_80x80.jpg" alt=""><h3>Meizu 魅族 魅蓝note 移动4G手机16G版 蓝色 双卡双待</h3><span class="date">2015-01-02</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#3"><img src="./CgQIzlUGpeeAXg4zAAOEHqy2RVU97901_80x80.jpg" alt=""><h3>Meizu 魅族 MX4 Pro 移动4G手机16G版 金色</h3><span class="date">2015-01-03</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#4"><img src="./CgQI0FRHF-KAbTYpAANdzqOuu-411501_80x80.jpg" alt=""><h3>华为 Mate7 MT7-CL00 标准版 电信4G手机 月光银 双卡双待双通 16G存储内存版</h3><span class="date">2015-01-04</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#5"><img src="./CgQIzlTz89-AfGaAAAJZPMkqd-476801_80x80.jpg" alt=""><h3>小米 小米4 MI4 4G智能手机 白色 联通合约版</h3><span class="date">2015-01-05</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#6"><img src="./CgQDslT9YrKAMMsoAABq-UGgxY401201_80x80.jpg" alt=""><h3>Lenovo 联想 笋尖 S60-t 樱花粉 移动4G手机 双卡双待</h3><span class="date">2015-01-06</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#7"><img src="./CgQDr1Ny7EOAax5LAAENzd6wWAI46401_80x80.jpg" alt=""><h3>Sony 索尼 Xperia Z2 L50U 4G智能手机 白色 联通定制</h3><span class="date">2015-01-07</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#8"><img src="./CgQCs1Ppq7uAFJV1AAanTDJTG3091901_80x80.jpg" alt=""><h3>Nubia 努比亚 大牛3 Z7 Max （NX505H）联通移动双4G手机 黑色 双卡双待</h3><span class="date">2015-01-08</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#9"><img src="./ChEbu1T_9eyAcy-fAAFIOWgIFnY38501_80x80.jpg" alt=""><h3>Lenovo 联想 乐檬 K3（K30-W）16G 典雅黄 联通4G手机 双卡双待</h3><span class="date">2015-01-09</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#10"><img src="./CgQCsFM-HxyAP2alAARr1DWBiAM30401_80x80.jpg" alt=""><h3>华为 荣耀 3X畅玩版 G750-T01 移动3G手机 手机 白色</h3><span class="date">2015-01-10</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#1"><img src="./CgQI0lQ3umiAYat_AAMa5tG_TXY20001_80x80.jpg" alt=""><h3>Apple 苹果 iPhone 6 Plus 16G 4G手机 金色 公开版（三网通用A1524)</h3><span class="date">2015-01-01</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#2"><img src="./CgQIzlSrnfaAHAzvAAJ8k2SN73Q20901_80x80.jpg" alt=""><h3>Meizu 魅族 魅蓝note 移动4G手机16G版 蓝色 双卡双待</h3><span class="date">2015-01-02</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#3"><img src="./CgQIzlUGpeeAXg4zAAOEHqy2RVU97901_80x80.jpg" alt=""><h3>Meizu 魅族 MX4 Pro 移动4G手机16G版 金色</h3><span class="date">2015-01-03</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#4"><img src="./CgQI0FRHF-KAbTYpAANdzqOuu-411501_80x80.jpg" alt=""><h3>华为 Mate7 MT7-CL00 标准版 电信4G手机 月光银 双卡双待双通 16G存储内存版</h3><span class="date">2015-01-04</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#5"><img src="./CgQIzlTz89-AfGaAAAJZPMkqd-476801_80x80.jpg" alt=""><h3>小米 小米4 MI4 4G智能手机 白色 联通合约版</h3><span class="date">2015-01-05</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#6"><img src="./CgQDslT9YrKAMMsoAABq-UGgxY401201_80x80.jpg" alt=""><h3>Lenovo 联想 笋尖 S60-t 樱花粉 移动4G手机 双卡双待</h3><span class="date">2015-01-06</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#7"><img src="./CgQDr1Ny7EOAax5LAAENzd6wWAI46401_80x80.jpg" alt=""><h3>Sony 索尼 Xperia Z2 L50U 4G智能手机 白色 联通定制</h3><span class="date">2015-01-07</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#8"><img src="./CgQCs1Ppq7uAFJV1AAanTDJTG3091901_80x80.jpg" alt=""><h3>Nubia 努比亚 大牛3 Z7 Max （NX505H）联通移动双4G手机 黑色 双卡双待</h3><span class="date">2015-01-08</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#9"><img src="./ChEbu1T_9eyAcy-fAAFIOWgIFnY38501_80x80.jpg" alt=""><h3>Lenovo 联想 乐檬 K3（K30-W）16G 典雅黄 联通4G手机 双卡双待</h3><span class="date">2015-01-09</span></a><a class="item opacity" href="http://www.17sucai.com/preview/119039/2016-08-08/dropload-gh-pages/demo.html#10"><img src="./CgQCsFM-HxyAP2alAARr1DWBiAM30401_80x80.jpg" alt=""><h3>华为 荣耀 3X畅玩版 G750-T01 移动3G手机 手机 白色</h3><span class="date">2015-01-10</span></a></div>
+<div class="dropload-down"><div class="dropload-refresh">↑上拉加载更多</div></div></div>
+<!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+<script src="./zepto.min.js.下载"></script>
+<script src="./dropload.min.js.下载"></script>
+<script>
+$(function(){
+    var itemIndex = 0;
+    var tab1LoadEnd = false;
+    var tab2LoadEnd = false;
+    // tab
+    $('.tab .item').on('click',function(){
+        var $this = $(this);
+        itemIndex = $this.index();
+        $this.addClass('cur').siblings('.item').removeClass('cur');
+        $('.lists').eq(itemIndex).show().siblings('.lists').hide();
+
+        // 如果选中菜单一
+        if(itemIndex == '0'){
+            // 如果数据没有加载完
+            if(!tab1LoadEnd){
+                // 解锁
+                dropload.unlock();
+                dropload.noData(false);
+            }else{
+                // 锁定
+                dropload.lock('down');
+                dropload.noData();
+            }
+        // 如果选中菜单二
+        }else if(itemIndex == '1'){
+            if(!tab2LoadEnd){
+                // 解锁
+                dropload.unlock();
+                dropload.noData(false);
+            }else{
+                // 锁定
+                dropload.lock('down');
+                dropload.noData();
+            }
+        }
+        // 重置
+        dropload.resetload();
+    });
+
+    var counter = 0;
+    // 每页展示4个
+    var num = 4;
+    var pageStart = 0,pageEnd = 0;
+
+    // dropload
+    var dropload = $('.content').dropload({
+        scrollArea : window,
+        loadDownFn : function(me){
+            // 加载菜单一的数据
+            if(itemIndex == '0'){
+                $.ajax({
+                    type: 'GET',
+                    url: 'json/more.json',
+                    dataType: 'json',
+                    success: function(data){
+                        var result = '';
+                        counter++;
+                        pageEnd = num * counter;
+                        pageStart = pageEnd - num;
+
+                        if(pageStart <= data.lists.length){
+                            for(var i = pageStart; i < pageEnd; i++){
+                                result +=   '<a class="item opacity" href="'+data.lists[i].link+'">'
+                                                +'<img src="'+data.lists[i].pic+'" alt="">'
+                                                +'<h3>'+data.lists[i].title+'</h3>'
+                                                +'<span class="date">'+data.lists[i].date+'</span>'
+                                            +'</a>';
+                                if((i + 1) >= data.lists.length){
+                                    // 数据加载完
+                                    tab1LoadEnd = true;
+                                    // 锁定
+                                    me.lock();
+                                    // 无数据
+                                    me.noData();
+                                    break;
+                                }
+                            }
+                            // 为了测试，延迟1秒加载
+                            setTimeout(function(){
+                                $('.lists').eq(0).append(result);
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                            },1000);
+                        }
+                    },
+                    error: function(xhr, type){
+                        alert('Ajax error!');
+                        // 即使加载出错，也得重置
+                        me.resetload();
+                    }
+                });
+            // 加载菜单二的数据
+            }else if(itemIndex == '1'){
+                $.ajax({
+                    type: 'GET',
+                    url: 'json/update.json',
+                    dataType: 'json',
+                    success: function(data){
+                        var result = '';
+                        for(var i = 0; i < data.lists.length; i++){
+                            result +=   '<a class="item opacity" href="'+data.lists[i].link+'">'
+                                            +'<img src="'+data.lists[i].pic+'" alt="">'
+                                            +'<h3>'+data.lists[i].title+'</h3>'
+                                            +'<span class="date">'+data.lists[i].date+'</span>'
+                                        +'</a>';
+                        }
+                        // 为了测试，延迟1秒加载
+                        setTimeout(function(){
+                            $('.lists').eq(1).append(result);
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                        },1000);
+                    },
+                    error: function(xhr, type){
+                        alert('Ajax error!');
+                        // 即使加载出错，也得重置
+                        me.resetload();
+                    }
+                });
+            }
+        }
+    });
+});
+</script>
+
+</body></html>

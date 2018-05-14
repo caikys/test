@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/animate.css">
+</head>
+<style type="text/css">
+	.hh{
+		height: 300px;
+		background: red;
+		display: none;
+	}
+</style>
+
+<body>
+	<span class="btn">点击我</span>
+	<div class="hh"></div>
+	
+</body>
+<script src="js/zepto.min.js"></script>
+<script>
+$('.btn').click(function () {
+	console.log(111);
+	$('.hh').show();
+	$('.hh').addClass("animated slideInDown")
+})
+</script>
+</html>

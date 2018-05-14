@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="http://www.softwhy.com/" />
+<title>jQuery进度条效果代码</title>
+<script src="js/jquery-1.8.3.min.js"></script>
+<style type="text/css">
+#progress 
+{
+ background:white;
+ height:20px;
+ padding:2px;
+ border:1px solid green;
+ margin:2px;
+}
+#progress span 
+{
+ background:green;
+ height:16px;
+ text-align:center;
+ padding:1px;
+ margin:1px;
+ display:block;
+ color:yellow;
+ font-weight:bold;
+ font-size:14px;
+ width:0%;
+}
+</style>
+<script type="text/javascript"> 
+ var progress_node_id = "progress"; 
+ function SetProgress(progress) { 
+	 if (progress) { 
+	 	$("#" + progress_node_id + " > span").css("width", String(progress) + "%"); 
+	 	$("#" + progress_node_id + " > span").html(String(progress) + "%"); 
+	 } 
+ } 
+ var i = 0; 
+ function doProgress() { 
+	if (i > 100) { 
+	 	alert("Progress Bar Finished!"); 
+	 	return; 
+	} 
+	if (i <= 100) { 
+	 	setTimeout("doProgress()", 500); 
+	 	SetProgress(i); 
+		i++; 
+	} 
+} 
+$(document).ready(function() { 
+	doProgress(); 
+}); 
+</script>
+</head>
+<body>
+<h1>jQuery实现进度条效果代码</h1>
+<p>原理就是使用 Javascript 控制 SPAN CSS 的宽度（以及其他的样式），刷新查看</p>
+<div id="progress"><span></span></div>
+</body>
+</html>

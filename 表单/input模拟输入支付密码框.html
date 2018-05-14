@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	.passContainer {
+	    border: 1px solid #ccc;
+	    border-radius: 16px;
+	    width: 300px;
+	    height: 50px;
+	    overflow: hidden;
+	    padding: 0;
+	    position: relative;
+	}
+	.passItem {
+	    width: 16.66666%;
+	    height: 100%;
+	    float: left;
+	    margin: 0;
+	    box-sizing: border-box;
+	}
+	.passItem:not(:last-child) {
+	    border-right: inherit;
+	}
+
+	.passContainer input {
+	    width: 100%;
+	    height: 100%;
+	    background-color: transparent;
+	    background: transparent;
+	    position: absolute;
+	    border: none;
+	    padding: 0 10px;
+	    outline: none;
+	    font-size: 40px;
+	    font-family: "courier new", sans-serif;
+	    letter-spacing: 0.62em;
+	    text-align: left;
+	    text-overflow: hidden;
+	}
+</style>
+<body>
+	<form>
+		<div class="passContainer">
+		    <input type="password" maxLength="6" />
+		    <div class="passItem"></div>
+		    <div class="passItem"></div>
+		    <div class="passItem"></div>
+		    <div class="passItem"></div>
+		    <div class="passItem"></div>
+		    <div class="passItem"></div>
+		</div>
+	</form>
+
+	 <p class="nums hide" id="wrap">
+        <input type="text" maxLength="1" class="ipt-password val1" value=""/>
+        <input type="text" maxLength="1" class="ipt-password val2" value=""/>
+        <input type="text" maxLength="1" class="ipt-password val3" value=""/>
+        <input type="text" maxLength="1" class="ipt-password val4" value=""/>
+        <input type="text" maxLength="1" class="ipt-password val5" value=""/>
+        <input type="text" maxLength="1" class="ipt-password val6" value=""/>
+    </p>
+</body>
+<script type="text/javascript" src="../js/jquery-1.12.0.js"></script>
+<script type="text/javascript">
+	// 输入框自动切换
+    var ipt = $("#wrap input");
+    var intxt = setInterval(function(){
+       for(var i=0;i<5;i++){
+           if(ipt[i].value != ""){
+               ipt[i+1].focus()
+           }
+       }
+    },0)
+    for(var j=5;j>0;j--){
+         $(ipt[j]).on("click",function(){
+             $(this).focus();
+             clearInterval(intxt);
+         })
+    }
+
+    $(".passContainer input").bind("input propertychange change",function(event){
+        console.log($(".passContainer input").val())
+    });
+</script>
+</html>

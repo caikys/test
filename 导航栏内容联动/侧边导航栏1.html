@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>Document</title>
+</head>
+<style type="text/css">
+*{padding:0;margin:0;border:none;}
+body{
+    font-size:14px;
+    font-family:"微软雅黑";
+}
+header{
+    width:100%;
+    height:80px;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    background-color:#123;
+    color:#fff;
+}
+aside{
+    width:120px;
+    position:absolute;
+    top:80px;
+    left:0;
+    bottom:0;
+    overflow:auto;
+}
+aside ul{
+	height: 100%;
+}
+aside ul li{
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+#main{
+    position: absolute;
+    left: 110px;
+    top: 80px;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+#con{
+    height:100%;
+    overflow:auto;
+
+    /*或者
+    *overflow-x:hidden;
+    *overflow-y:scroll;
+    */
+
+    background-color:#789;
+    color:#fff;
+}
+#con .content{
+	height: 1000px;
+}
+.left li.active{
+	    font-weight:bold;
+	    background:#f60;
+	}
+</style>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<body>
+	<header>header</header>
+        <aside>
+			<ul class="left">
+				<li>选项1</li>
+	            <li>选项2</li>
+	            <li>选项3</li>
+	            <li>选项4</li>
+	            <li>选项5</li>
+	            <li>选项6</li>
+	            <li>选项7</li>
+	            <li>选项8</li>
+	            <li>选项9</li>
+	            <li>选项10</li>
+	            <li>选项11</li>
+	            <li>选项12</li>
+	            <li>选项13</li>
+	            <li>选项14</li>
+	            <li>选项15</li>
+	            <li>选项16</li>
+	            <li>选项17</li>
+			</ul>
+        </aside>
+        <section id="main">
+            <div id="con">
+                <div class="content">第一</div>
+		        <div class="content">第二</div>
+		        <div class="content">第三</div>
+		        <div class="content">第四</div>
+		        <div class="content">第五</div>
+		        <div class="content">第六</div>
+		        <div class="content">第七</div>
+		        <div class="content">第八</div>
+		        <div class="content">第九</div>
+		        <div class="content">第十</div>
+		        <div class="content">第十一</div>
+		        <div class="content">第十二</div>
+		        <div class="content">第十三</div>
+		        <div class="content">第十四</div>
+		        <div class="content">第十五</div>
+		        <div class="content">第十六</div>
+		        <div class="content">第十七</div>
+            </div>
+        </section>
+</body>
+<script>
+    $(function(){
+        // 1)隐藏除第一个以外的所有.content
+        $('.content').hide().eq(0).show();
+
+        // 2)高亮显示第一个tab标签
+        $('.left li').eq(0).addClass('active');
+
+        // 3）点击标签，切换相应的内容
+        $('.left li').click(function(){
+            // 获取当前li所在的索引值
+            var idx = $(this).index();
+           
+            // $('.content').css('left','110px');
+            $('.content').hide().eq(idx).show();
+            $('.left li').removeClass('active').eq(idx).addClass('active');
+        });
+
+    });
+</script>
+</html>
