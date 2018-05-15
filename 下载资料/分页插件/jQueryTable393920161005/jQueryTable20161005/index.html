@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/table.js"></script>
+<script src="js/jquery.page.js"></script>
+</head>
+
+<body>
+	<div class="table_body"></div>
+	<div id="page_navigation"></div>
+<script>
+$(document).Table('.table_body','re',56,4,['序号','项目1','项目2','项目3'],[[,,],[,,],[,,]]);
+$(document).PaginBar('page_navigation','table_body',22);
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<title>抽奖</title>
+<script type="text/javascript" src="js/jquery-1.8.2.js" ></script>
+<style type="text/css">
+	html,body{
+		margin:0  auto;
+		padding: 0;
+		width: 100%;
+		 height: 100%;
+	}
+	#choujiangUL{
+		list-style: none;
+		position: absolute;
+		width: 100%;
+		height: 50%;
+		padding: 0;
+		margin: 0
+	}
+	#choujiangUL li{
+	  float: left;
+	  width: 32%;
+/*	  height: 33.33%;*/
+	  text-align: center;
+	  border: 1px solid #CCCCCC
+	  /*background-color: deepskyblue;*/
+	 /*border: 1px solid white;*/
+	}
+	#choujiangUL li img{
+	 	 width: 100%;
+	 	 height: 100%;
+	}
+	
+	.active{
+		background-color: #990000;
+	}
+</style>
+</head>
+<body>
+	<ul id="choujiangUL">
+		<li class="prize-0 active">
+			<img src="img/choujiang/1.png" />
+		</li>
+		<li class="prize-1">
+			<img src="img/choujiang/2.png" />
+		</li>
+		<li class="prize-2">
+			<img src="img/choujiang/3.png" />
+		</li>
+		<li class="prize-7">
+			<img src="img/choujiang/4.png" />
+		</li>
+		<li id="btnChouj" >
+			<img src="img/choujiang/choujiang.png" />
+		</li>
+		<li class="prize-3">
+			<img src="img/choujiang/5.png" />
+		</li>
+		<li class="prize-6">
+			<img src="img/choujiang/6.png" />
+		</li>
+		<li class="prize-5">
+			<img src="img/choujiang/7.png" />
+		</li>
+		<li class="prize-4">
+			<img src="img/choujiang/8.png" />
+		</li>
+		 
+	</ul>
+	
+</body>
+</html>
+<script type="text/javascript">
+ var  roll={
+	Msgs:["一等獎","二等獎","三等獎","四等獎","五等獎","六等獎","七等獎","八等獎"],
+	index:0,//当前位置索引
+	times:0,//次数
+	roundTimes:0,//圈数
+	timer:0,//循环器
+	speed:300,//转动速度
+	isActive:false,//游戏是否在运行
+	Init:function(){
+		///初始化
+		this.roundTimes=0;
+		this.isActive=true;
+	},
+	Start:function(cls,callback){
+		var that=this;
+		if(that.isActive==true){
+			// alert('游戏正在进行!');
+			return;
+		}
+		if(that.times==4){
+			alert('只有四次机会');
+			return;
+		}
+
+		//每次抽奖前清除之前的数据
+		that.Init();
+
+		//定时器
+		var  interVal=setInterval(function(){
+			if(that.index==8){
+				console.log("in");
+				that.index=0;
+				that.roundTimes++;
+			}
+			//转6圈停止转动
+			if(that.roundTimes==6){
+				//随机取一个0-7的整数，添加样式，后台获取数据也是这里
+			    that.index=parseInt(Math.random()*7) ;
+				$('li[class^='+cls+']').removeClass('active');
+				$('.'+cls+'-'+ that.index).addClass('active');
+				that.isActive=false;
+				clearInterval(that.timer); 
+				if(Object.prototype.toString.call(callback)=='[object Function]'){
+			       	 callback.call(this,that.index,that.Msgs[that.index]);
+			    }
+			}
+			else{
+			   $('li[class^='+cls+']').removeClass('active');
+			   $('.'+cls+'-'+ that.index).addClass('active');
+			   that.index++;
+			}
+			 
+		},100);
+		that.timer=interVal;
+		that.times++;
+	} 
+}
+
+$(function(){
+	$('#btnChouj').click(function(){
+		roll.Start('prize',function(index,msg){
+			setTimeout(function(){
+				// alert(msg);
+			})	
+		});
+	});
+})	
+</script>

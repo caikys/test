@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>So you need a template engine..</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<a href="https://github.com/garann/template-chooser" class="forkme"><img src="//s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+		<h1>Template-Engine-Chooser!</h1>
+		<h2 class="unmaintained-warning">This tool is not being updated &mdash; <a href="https://github.com/garann/template-chooser">more info</a></h2>
+		<div class="criteria">
+			<fieldset>
+				<legend>Is this for use on the client or the server?</legend>
+				<label>client <input type="radio" name="radSide" value="client-side" /></label>
+				<label>server <input type="radio" name="radSide" value="server-side" /></label>
+				<label>both <input type="radio" name="radSide" value="client-side.server-side" /></label>
+			</fieldset>
+			<fieldset>
+				<legend>How much logic should it have?</legend>
+				<label>the entirety of JS <input type="radio" name="radLogic" value="logicful" /></label>
+				<label>just the basics <input type="radio" name="radLogic" value="logicish" /></label>
+				<label>none at all <input type="radio" name="radLogic" value="logicless" /></label>
+			</fieldset>
+			<fieldset>
+				<legend>Does it need to be one of the very fastest?</legend>
+				<label>yes <input type="radio" name="radSpeed" value="speedy" /></label>
+				<label>no <input type="radio" name="radSpeed" value="" /></label>
+			</fieldset>
+			<fieldset>
+				<legend>Do you need to pre-compile templates?</legend>
+				<label>yes <input type="radio" name="radCompile" value="compile" /></label>
+				<label>no <input type="radio" name="radCompile" value="" /></label>
+			</fieldset>
+			<fieldset>
+				<legend>Do you need compile-time partials?</legend>
+				<label>yes <input type="radio" name="radParts" value="parts" /></label>
+				<label>no <input type="radio" name="radParts" value="" /></label>
+			</fieldset>
+			<fieldset>
+				<legend>Do you want a DOM structure, or just a string?</legend>
+				<label>DOM <input type="radio" name="radDom" value="dom" /></label>
+				<label>string <input type="radio" name="radDom" value="string" /></label>
+			</fieldset>
+			<fieldset>
+				<legend>Aside from template tags, should it be the same language before and after rendering?</legend>
+				<label>yes <input type="radio" name="radHtml" value="format" /></label>
+				<label>no <input type="radio" name="radHtml" value="not-format" /></label>
+			</fieldset>
+		</div>
+		<div class="engines"></div>
+		<footer>
+			Fastness is based on the top three from revisions of this <a href="http://jsperf.com/javascript-templating-shootoff-extended">jsPerf</a>. <br/>
+			Remember! If you don't know what it means, you probably don't care about it. ;)
+		</footer>
+	</body>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="doT.min.js"></script>
+	<script src="script.js"></script>
+	<script id="tmplsTmpl" type="text/tmpl">
+	{{~it.all :item}}
+			<div class="add {{=item.traits.join( ' ' ) }}">
+				<h2>{{=item.name}}</h2>
+				<a href="{{=item.link}}">{{=item.link_text}}</a>&nbsp;
+				{{? item.size.length }}
+				<span>({{=item.size}})</span>
+				{{?}}
+			</div>
+	{{~}}
+	</script>
+</html>

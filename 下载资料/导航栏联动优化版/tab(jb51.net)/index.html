@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>移动端TAB触屏切换效果</title>
+<meta name="keywords" content="移动，切换" />
+<meta name="description" content="文章结合实例演示HTML5、CSS3、jquery、PHP等WEB技术应用。" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript" src="js/zepto_min.js"></script>
+<script type="text/javascript" src="js/touchslider.js"></script>
+<!-- <script type="text/javascript" src="js/iscroll.js"></script> -->
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+
+</head>
+<style type="text/css">
+	#wrapper {
+		width: 100%;
+		background: #ccc;
+		overflow: hidden;
+		height: 50px;
+	}
+
+	#scroller {
+		z-index: 1;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		width: 1060px;
+		height: 50px;
+		-webkit-transform: translateZ(0);
+		-moz-transform: translateZ(0);
+		-ms-transform: translateZ(0);
+		-o-transform: translateZ(0);
+		transform: translateZ(0);
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-text-size-adjust: none;
+		-moz-text-size-adjust: none;
+		-ms-text-size-adjust: none;
+		-o-text-size-adjust: none;
+		text-size-adjust: none;
+	}
+
+	#scroller ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		width: 100%;
+		height: 50px;
+		text-align: center;
+	}
+
+	#scroller li {
+		display: block;
+		float: left;
+		width: 100px;
+		height: 100%;
+		line-height: 50px;
+		border-right: 1px solid #ccc;
+		background-color: #fafafa;
+		font-size: 14px;
+	}
+</style>
+
+<body>
+<div id="header">
+   
+</div>
+<div id="main">
+	<h2 class="top_title"><a href="#">移动端TAB触屏切换效果</a></h2>
+
+	<div class="box-163css">
+		<div id="wrapper">
+			<div id="scroller">
+				<div id="pagenavi" class="page" style="transform: translate(-1px, 0px);">
+			        
+			        <a href="#" class="active">第一</a>
+			      	<a href="#">第二</a>
+			        <a href="#">第三</a>
+			        <a href="#">第四</a>
+			        <a href="#">第五</a>
+			        <a href="#">第六</a>
+			        <a href="#">第七</a>
+			        <a href="#">第八</a>
+			        <a href="#">第九</a>
+			        <a href="#">第十</a>
+			    </div>
+		    </div>
+	    </div>
+
+	    <div id="slider" class="swipe">
+	      <ul class="box01_list">
+	        <li class="li_list">
+				<a href="">第一</a>
+			</li>
+	        <li class="li_list">
+				<a href="">第二</a>
+			</li>
+			<li class="li_list">
+				<a href="">第三</a>
+			</li>
+			<li class="li_list">
+				<a href="">第四</a>
+			</li>
+			<li class="li_list">
+				<a href="">第五</a>
+			</li>
+			<li class="li_list">
+				<a href="">第六</a>
+			</li>
+			<li class="li_list">
+				<a href="">第七</a>
+			</li>
+			<li class="li_list">
+				<a href="">第八</a>
+			</li>
+			<li class="li_list">
+				<a href="">第九</a>
+			</li>
+			<li class="li_list">
+				<a href="">第十</a>
+			</li>
+	      </ul>
+		  
+	    </div>
+		<a href="#" target="_blank"  class="go_btn">底部</a>
+	</div>
+</div>
+
+<script type="text/javascript">	
+	var page='pagenavi';
+	var mslide='slider';
+
+	var as=document.getElementById(page).getElementsByTagName('a');
+
+	var tt=new TouchSlider({id:mslide,'auto':'-1',fx:'ease-out',direction:'left',speed:50,timeout:5000,'before':function(index){
+		// console.log('in')
+		// console.log('滑动时导航栏下标：'+index);
+		var as=document.getElementById(this.page).getElementsByTagName('a');
+		console.log('index值'+index);
+		if(index<8){
+			var hh=-100*index;
+			$('#pagenavi').css("transform","translate("+hh+"px,0px)");
+		}
+		as[this.p].className='';
+		as[index].className='active';
+		this.p=index;
+	}});
+
+	tt.page = page;
+	tt.p = 0;
+	$(function(){
+	    $(".page a").click(function() {
+	        // console.log($(this).index());
+	        var idx=$(this).index();
+	        tt.slide(idx);
+			return false;
+	    })
+	})
+	
+	var startX = startY = endX = endY = 0;
+    var dom = document.getElementById('pagenavi');
+    //touchStart事件
+    dom.addEventListener('touchstart',function(event){
+        var touch = event.targetTouches[0];
+        startX = touch.pageX;
+        startY = touch.pageY;
+        console.log('开始滑动横坐标'+startX);
+    },false);
+    //touchmove事件
+    dom.addEventListener('touchmove',function(event){
+        var touch = event.targetTouches[0];
+        endX = touch.pageX;
+        endY = touch.pageY;
+        var dx=endX - startX;
+        var fx=document.getElementById('pagenavi').style.transform.replace(/[^0-9\-,]/g,'').split(',');
+        var s=parseInt(fx[0]);
+        console.log('s的值'+s);
+        var x=dx+s;
+        if(-680<x&&x<0){
+	        $('#pagenavi').css("transform","translate("+x+"px,0px)");
+        }
+        
+    },false);
+    //touchend事件
+    dom.addEventListener('touchend',function(event){
+        
+    },false);
+</script>
+
+<div id="footer">
+    
+</div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="yes" name="apple-touch-fullscreen" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta name="wap-font-scale" content="no">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<title>jQuery大转盘抽奖填写联系方式代码 - xw素材网</title>
+<link href="css/component.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/awardRotate.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+<!-------------抽奖页面-------------->
+<div class="ml-main" id="ml-main">
+	<div class="kePublic">
+		<!--转盘效果开始-->
+		<div style="max-width:640px; margin:0 auto">
+			<div class="banner">
+				<div class="turnplate" style="background-image:url(images/turnplate-bg_2.png);background-size:100% 100%;">
+					<canvas class="item" id="wheelcanvas" width="516" height="516"></canvas>
+					<img id="tupBtn" class="pointer" src="images/turnplate-pointer_2.png">
+					<!--<button id="tupBtn"><img src="images/turnplate-pointer_2.png"></button>-->
+				</div>
+			</div>
+		</div>
+		<!--转盘效果结束-->
+		<div class="clear"></div>
+	</div>
+</div>
+<!-------------中奖弹窗页面-------------->
+<div class="zj-main" id="zj-main">
+		<div class="txzl">
+			<h3>HI 亲！人品爆发！</h3>
+			<h2>恭喜抽中<br /><span id="jiangpin"></span></h2>
+			<p>请填写资料领取奖品：</p>
+			<label>姓名：<input type="text" name="username" /></label>
+			<label>电话：<input type="text" name="userphone" /></label>
+			<h4><sub>*</sub>未提交个人资料将视为放弃领取此次奖品</h4>
+			<div class="info_tj">提交领奖</div>
+		</div>
+		<div class="close_zj"><img src="images/close_1.png" /></div>
+</div>
+<!-------------谢谢参与弹窗-------------->
+<div class="xxcy-main" id="xxcy-main">
+	<div class="xxcy">
+		<h3>谢谢参与！</h3>
+		<p>不要气馁，明天继续投票还可以抽奖哦。</p>
+	</div>
+	<div class="close_xxcy"><img src="images/close_1.png" /></div>
+</div>
+<!-------------提交成功弹窗-------------->
+<div class="tjcg-main" id="tjcg-main">
+	<div class="tjcg">
+		<h3>恭喜您提交成功</h3>
+		<p>请于2016年5月31日<br />前到院领取奖品</p>
+	</div>
+	<div class="close_tjcg"><img src="images/close_1.png" /></div>
+</div>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://www.xwcms.net/" target="_blank">xw素材网</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/main.css" rel="stylesheet"/>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/swiper-3.2.7.min.css" rel="stylesheet"/>
+    <style>
+
+		.seatMap{
+			width:100%;
+			position: relative;
+			height:16rem;
+			border-top:1px solid #ccc;
+		}
+		
+		div.seatCharts-cell {
+			color: #000;
+			width: 1rem;
+			margin: 0.3%;
+			float: left;
+			text-align: center;outline: none;font-size: 13px;}/*座位信息*/
+		div.seatCharts-seat {
+			color: #fff;
+			cursor: pointer;
+			-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}/*默认座位基本信息*/
+		div.seatCharts-row {overflow:hidden;overflow-x:hidden}/*行样式*/
+		.first-class {
+			background:url(img/seat/publicSeat.png) no-repeat;
+			background-size:100%}/*可选择的图片*/
+		div.seatCharts-seat.focused {
+			background-color: #76B474;
+			border: none;}/*鼠标上移的座位显示*/
+		div.seatCharts-seat.selected {
+			background-color: #E6CAC4;}/*点击选中的座位*/
+		div.seatCharts-seat.unavailable {
+			background:url(img/seat/unavailable.png) no-repeat;
+			background-size:100%;cursor: not-allowed;}/*禁止选择*/
+		div.seatCharts-container {
+			min-width: 100%;
+			width: auto;
+			height:auto;
+			float: left;margin:1rem 0;padding:1rem 0;
+			overflow:auto;}
+			.clearfix{overflow: hidden;}
+			#wrapper {
+			    position:relative; z-index:1;
+			    top:0; left:0;bottom:0;
+			    width:100%;
+			    overflow:auto;
+			    height:100%;
+			    /*float: left;*/
+			}
+
+			#scroller {
+			    position:relative;
+			  /*-webkit-touch-callout:none;*/
+			    -webkit-tap-highlight-color:rgba(0,0,0,0);
+			    float:left;
+			    width:auto;
+			    padding:0;
+			    overflow:auto;
+			}
+			
+		.economy-class{
+			background:url(img/seat/vip.png) no-repeat;
+			background-size:100%;cursor: not-allowed;
+		}
+		.kindsSeatA,.kindsSeatB{
+			overflow: hidden;
+			text-align: center;
+		}
+		.kindsSeatA li,.kindsSeatB li{
+			display:inline-block;
+		}
+		.kindsSeat img{
+			width:16px;
+		}
+		.swiper-container {
+		    width: 100%;
+		    height: 100%;
+		    margin:0 auto;
+		} 
+    </style>
+</head>
+<script>
+	//
+	window.onload=function(){
+		var n= $('.seatCharts-container').width();
+		var rowH=$(".seatCharts-row");
+		var cellH=$(".seatCharts-cell");
+		var containerW=$(".seatCharts-container")
+		var widthTime=setInterval(function(){
+			console.log(rowH.height()+"/"+cellH.outerHeight(true));
+			if(rowH.height()>cellH.outerHeight(true)){
+				n+=50;
+				containerW.css("width",n);
+			}else{
+				clearInterval(widthTime);
+			}
+		},0)
+		}
+</script>
+<body>
+<div class="mui-content">
+	<div class="header">
+		<dl class="shopMessage">
+			<dt>下沙阳光华城店<i class="icon icon-shop"></i></dt>
+			<dd><a href="map.html">地址：杭州经济开发区学正街402号<i class="icon icon-address"></i></a></dd>
+			<dd><a href="javascript:void(0);">联系电话：0571-99999999<i class="icon icon-tel"></i></a></dd>
+		</dl>
+		<a href="city.html" class="goMap">杭州<span class="mui-icon mui-icon-arrowdown"></span></a>
+	</div>
+	<div class="time">
+		<span class="timeTitle">上机时间 </span>  
+		<select class="timeSelect"><option>即时</option><option>18:00-22:00</option></select>
+		<span class="mui-icon mui-icon-arrowdown" style="    position: relative;
+    left: -21px;
+    top: 3px;"></span>
+	</div>
+	<div class="seat">
+		<div class="tab">
+			<a class="mui-icon mui-icon-arrowleft swiper-button-prev"></a>
+				<span class="tabTitle">1F</span>
+			<a class="mui-icon mui-icon-arrowright swiper-button-next"></a>
+		</div>
+		<!--<iframe class="seatMap" style="border:1px solid #000;    position: relative;" src="seat.html" id=""></iframe>-->
+		<div class="kindsSeat">
+			<ul class="kindsSeatA">
+				<li><img src="img/seat/publicSeat.png" />不可选</li>
+				<li><img src="img/seat/publicSeat.png" />已选</li>
+			</ul>
+			<ul class="kindsSeatB">
+				<li><img src="img/seat/publicSeat.png" />卡座￥5/h</li>
+				<li><img src="img/seat/publicSeat.png" />大厅￥2/h</li>
+			</ul>
+		</div>
+		<div class="seatMap"> 
+		<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<div id="wrapper">
+				    <div id="scroller">
+							<div class="seat_area "></div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div id="wrapper">
+				    <div id="scroller">
+							<div class="seat_area "></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+	</div>
+	<div class="footer">
+		<p class="seatTips">座位定金：￥<span id="total_price"></span></p>
+		<p class="tips">（定金将在上机时返还，若违约将不予以退还。）</p>
+		<a href="javascript:void(0)" class="confirm">确认占座</a><!--不用href-->
+	</div>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.seat-charts.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+
+
+
+
+
+
+<script type="text/javascript">
+var price;
+
+$(document).ready(function() {
+	var $cart = $('#seats_chose'), //座位区
+			$tickects_num = $('#tickects_num'), //票数
+			$total_price = $('#total_price'); //票价总额
+
+	var sc = $('.seat_area').seatCharts({
+		map: [//座位结构图 a 代表座位; 下划线 "_" 代表过道
+			'fccccccccccccccccccccccccccccccccc',
+			'fcccc__cc',
+			'ccccc__cc',
+			'ccccc__cc',
+			'cccccccccc',
+			'cccccccccc',
+			'ccccccccc',
+			'cccccccccc',
+			'cccccccccc',
+			'cc__cc__cc',
+			'cccccccccc',
+			'cc__cc__cc',
+			'cccccccccc',
+			'cc__cc__cc',
+			'cccccccccc',
+			'cc__cc__cc',
+			'cccccccccc',
+			'cc__cc__cc',
+		],
+		seats: {
+			f: {
+				price   : 100,
+				classes : 'economy-class', //your custom CSS class
+				category: '头等舱'
+			},
+			c: {
+				price   : 40,
+				classes : 'first-class', //your custom CSS class
+				category: '经济舱'
+			}					
+		},			
+		naming: {//设置行列等信息
+			top: false, //不显示顶部横坐标（行） 
+			getLabel: function(character, row, column) { //返回座位信息 
+				return column;
+			}
+		},
+		legend: {//定义图例
+			node: $('#legend'),
+			items: [
+				['f', 'available', 'vip'],
+				['c', 'available', '可选座'],
+				['c', 'unavailable', '已售出']
+			]
+		},
+		click: function() {
+			if (this.status() == 'available') { //若为可选座状态，添加座位
+				if(sc.find('selected').length>0){
+					sc.get(sc.find('selected')).status('available');
+					$total_price.text(getTotalPrice(sc) + this.data().price);//计算票价总金额
+					return 'selected';
+				}
+				else{
+					$total_price.text(getTotalPrice(sc) + this.data().price);//计算票价总金额
+					return 'selected';
+				}
+			} else if (this.status() == 'selected') { //若为选中状态
+
+				$tickects_num.text(sc.find('selected').length - 1);//更新票数量
+				$total_price.text(getTotalPrice(sc) - price);//更新票价总金额
+				$('#cart-item-' + this.settings.id).remove();//删除已预订座位
+				return 'available';
+			} else if (this.status() == 'unavailable') { //若为已售出状态
+				return 'unavailable';
+			} else {
+				return this.style();
+			}
+		}
+	});
+	//设置已售出的座位
+	sc.get(['1_3', '1_4', '4_4', '4_5', '4_6', '4_7', '4_8']).status('unavailable');
+
+});
+
+function getTotalPrice(sc) { //计算票价总额
+	var total = 0;
+	sc.find('selected').each(function() {
+		total = price;
+	});
+	return total;
+}
+</script>
+<script>
+  var myscroll;
+    function loaded(){
+   setTimeout(function(){
+            myscroll=new iScroll("wrapper",{
+            	hScroll:true,
+            	vScroll:true,
+            	hScrollbar:false,
+            	vScrollbar:false,
+            	zoom:true,
+            });
+     },100 );
+}
+window.addEventListener("load",loaded,false);
+</script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script>          
+  $(function(){
+      var mySwiper = new Swiper ('.swiper-container', {
+      effect : 'slide',
+      direction: 'horizontal',
+      onlyExternal : true,
+      loop: true,//是否循环播放
+      initialSlide:0,//初始展示页面
+      speed:800,
+      //autoplay:2000,//是否自动播放
+      parallax : true,
+      //paginationHide :true,//点击可隐藏索引
+      //scrollbarHide:false,//默认滚动条是否自动隐藏
+      autoplayDisableOnInteraction:false,//经过手动拖动，还是能自动播放
+      //freeMode:true,//是否自由拖动
+      //setWrapperSize:true,//flexbox布局(display: flex)时可能用到
+      
+      // 如果需要分页器
+      //pagination: '.swiper-pagination',
+      //如果需要前进后退按钮
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+    }) 
+  })            
+  </script>
+</body>
+</html>

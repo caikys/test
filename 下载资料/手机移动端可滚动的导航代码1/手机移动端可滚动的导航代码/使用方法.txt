@@ -1,0 +1,13 @@
+手机移动端可滚动的导航代码，支持iOS，Android（暂不支持WP）等系统以webkit为内核的浏览器，建议在PC端使用以webkit为内核的浏览器（如：Google Chrome）中缩小浏览器窗口宽度查看效果,PC端查看效果需要用鼠标按住导航拖动以模拟手机上手指拖动的效果。
+
+使用方法：
+
+1.head区域引用样式文件avigator.css，navigator.iscroll.css，navigator.default.css，navigator.iscroll.default.css
+
+2.head区域引用JS文件zepto.js，zepto.extend.js，zepto.ui.js，zepto.iscroll.js，navigator.js，navigator.iscroll.js
+
+3.在你的文件中加入<!-- 代码 开始 --><!-- 代码 结束 -->区域代码
+
+4.本代码中两种导航效果均需引用所有CSS,JS文件，如需修改样式，可去掉default相关样式文件
+
+*更多代码请访问：懒人图库 www.lanrentuku.com/js/

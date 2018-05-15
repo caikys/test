@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+<title>iScroll demo: horizontal scrolling</title>
+
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+
+<!-- <script type="text/javascript">
+
+var myScroll;
+
+function loaded () {
+	myScroll = new IScroll('#wrapper', { scrollX: true, scrollY: false, mouseWheel: true ,click: true});
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+</script> -->
+
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<div id="header">iScroll</div>
+
+<div id="wrapper">
+	<div id="scroller">
+		<ul>
+			<!-- <a href="#">Cell 1</a>
+			<a href="#">Cell 2</a>
+			<a href="#">Cell 3</a> -->
+			<li><a href="#">Cell 1</a><li>
+			<li><a href="#">Cell 2</a><li>
+			<li><a href="#">Cell 3</a><li>
+		</ul>
+	</div>
+</div>
+
+<div id="footer"></div>
+
+</body>
+<script type="text/javascript">
+	$(function(){
+    $("#scroller a").click(function() {
+        $(this).addClass('selected');  // 给被点击元素添加样式
+        console.log($(this).index());
+    })
+})
+
+</script>
+</html>

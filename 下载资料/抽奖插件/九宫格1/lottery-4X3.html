@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery九宫格抽奖转盘插件lottery</title>
+<style type="text/css">
+	#lottery{width:568px;height:426px;margin:20px auto 0;padding:50px 55px;}
+	#lottery table td{width:142px;height:142px;text-align:center;vertical-align:middle;font-size:24px;color:#333;font-index:-999}
+	#lottery table td a{width:284px;height:142px;line-height:150px;display:block;text-decoration:none;}
+	#lottery table td.active{background-color:#ea0000;}
+	#lottery table td.first{background-color:#8670ff;}
+	#lottery table td.second{background-color:#df88cf;}
+	#lottery table td.third{background-color:#8ed9f9;}
+	#lottery table td.four{background-color:#fef9b9;}
+	
+    #lottery table td.active{background-color:yellow;}
+	#demo{width:300px; margin:50px auto 10px; overflow:hidden;}
+	#demo a{float:left; width:90px; height:30px; line-height:30px; text-align:center; margin-left:10px; background-color:#000; color:#fff; text-decoration:none; font-weight:bold;}
+	#demo a.cur{background-color:#933;}
+</style>
+</head>
+<body>
+ <center>
+  <span style="font-size:15px; font-weight:bold; text-align:center; line-height:25px; color:#000; width:100%">jquery九宫格抽奖转盘插件lottery<br />
+  <a href="http://www.jq-school.com" target="_blank" style="color:#000">JquerySchool</a>网站出品（<a href="http://www.jq-school.com" style="color:#000" target="_blank">http://www.jq-school.com</a>） <br />
+   <a href="http://api.jq-school.com/" target="_blank" style="color:#000">在线API帮助文档</a> <br />
+  <a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=47d9817e9e09f61b288b8ad6d33fb18cbd659ca6773f663918d6e5d3a2981a12">官方网站学习交流QQ群<img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" style="width:90px; height:22px;" alt="jquery学堂3群群" width="90" height="22" title="jquery学堂3群"></a></span>
+</center>
+<div id="demo"><a href="demo.html">demo1</a><a href="lottery-4X3.html" class="cur">demo2</a><a href="lottery-4X4.html">demo3</a></div>
+<div id="lottery">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr class="lottery-group">
+			<td class="lottery-unit four"><img src="images/1.png" /></td>
+			<td class="lottery-unit second"><img src="images/2.png" /></td>
+			<td class="lottery-unit third"><img src="images/4.png" /></td>
+            <td class="lottery-unit four"><img src="images/3.png" /></td>
+		</tr>
+		<tr class="lottery-group">
+			<td class="lottery-unit first"><img src="images/7.png" /></td>
+			<td colspan="2"><a href="#"><img src="images/start_bg.jpg" /></a></td>
+			<td class="lottery-unit first"><img src="images/5.png" /></td>
+		</tr>
+        <tr class="lottery-group">
+			<td class="lottery-unit third"><img src="images/3.png" /></td>
+			<td class="lottery-unit four"><img src="images/6.png" /></td>
+			<td class="lottery-unit first"><img src="images/8.png" /></td>
+            <td class="lottery-unit third"><img src="images/7.png" /></td>
+		</tr>
+	</table>
+</div>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/lottery.js"></script>
+<script type="text/javascript">
+	window.onload = function () {
+		lottery.lottery({
+			selector:     '#lottery',
+			width:        4,
+			height:       3,
+			index:        0,    // 初始位置
+			initSpeed:    500,  // 初始转动速度
+			// upStep:       50,   // 加速滚动步长
+			// upMax:        50,   // 速度上限
+			// downStep:     30,   // 减速滚动步长
+			// downMax:      500,  // 减速上限
+			// waiting:      5000, // 匀速转动时长
+			beforeRoll: function () { // 重写滚动前事件：beforeRoll
+				// console.log(this);
+				// alert(1);
+			}
+		});
+	}
+</script>
+</body>
+</html>
