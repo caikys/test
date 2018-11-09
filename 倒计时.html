@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.code_timeing{
+		color: red;
+	}
+	.code_timeout{
+		color: red;
+		display: none;
+	}
+	.ref{
+		color: blue;
+	}
+</style>
+<body>
+	<div class="code_timeing">距离二维码过期还剩下<span class="code-s">6</span>秒，过期后请刷新页面重新获取二维码</div>
+	<div class="code_timeout">二维码已经过期，<span class="ref">刷新</span>页面重新获取二维码</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+
+
+var counttime = 6;
+var timeitv;
+$(function(){	
+	timeitv = setInterval(tip, 1000);
+
+	// 刷新页面
+	$(".code_timeout .ref").click(function(){
+		window.location.reload();//刷新页面方法
+	})
+})
+
+
+/**
+ * 二维码倒计时
+ * @return 无
+ */
+function tip() {
+	counttime--;
+	if (counttime < 1) {
+		$("#code-btn").removeAttr("disabled");
+		counttime = 6;
+		clearInterval(timeitv);
+		$(".code_timeing").hide();
+		$(".code_timeout").show();
+	} else {
+		$(".code-s").text(counttime);
+	}
+}	
+	
+</script>
+</html>

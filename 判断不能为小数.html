@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="text" value="1">
+</body>
+<script src="js/jquery-1.12.0.js"></script>
+<script>
+    $('input').bind('input propertychange', function() {
+        var inpVal=$(this).val();
+        console.log(typeof inpVal);
+        // 不能为小数或者空
+        if(! /^\d+$/.test(inpVal)){
+            console.log("不能输入小数");
+            inpVal=Math.floor($(this).val());
+            $(this).val(inpVal);
+            if(inpVal.length==0){
+                console.log("in");
+                $(this).val(1)
+            }
+        }
+
+        // 限购
+        if(inpVal>200){
+            alert("限购200件哦");
+            $(this).val(200)
+        }
+    });
+</script>
+</html>

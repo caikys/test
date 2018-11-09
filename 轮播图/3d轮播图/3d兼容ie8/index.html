@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;;
+        }
+        /**/
+        .roundabout-moveable-item{
+            max-width:240px;!important;
+        }
+        .next {
+            position: absolute;
+            top: 372px;
+            margin-top: -40px;
+            z-index: 200;
+            display: block;
+            width: 80px;
+            height: 80px;
+            background-position: 0 0;
+        }
+        .prev{
+            position: absolute;
+            top: 457px;
+            margin-top: -40px;
+            z-index: 200;
+            display: block;
+            width: 80px;
+            height: 80px;
+            right: 14%;
+            background-position: -80px 0;
+        }
+        .roundabout-holder{width:600px;height:400px;margin:0 auto;}
+        .roundabout-moveable-item {width: 240px;height: 320px;cursor: pointer;}
+        .roundabout-moveable-item img{width:100%;height: 100%}
+        .roundabout-in-focus {}
+        .settled-lb{
+            width:900px;
+            margin-left: 104px;
+            margin-top: 50px;
+        }
+        .roundabout-moveable-item1{
+            background:red;
+        }
+        .roundabout-moveable-item2{
+            background:#808080;
+        }
+        .roundabout-moveable-item3{
+            background:green;
+        }
+    </style>
+</head>
+<body>
+<div class="settled-lb">
+    <ul id="myroundabout" class="roundabout-holder" style="">
+        <li class="roundabout-moveable-item roundabout-moveable-item1">
+            <a href="javascript:void (0);" target="_blank">
+                <img src="" alt="" style="">
+            </a>
+        </li>
+        <li class="">
+            <a href="javascript:void (0);" target="_blank">
+                <img src="">
+            </a>
+        </li>
+        <li class="roundabout-moveable-item roundabout-in-focus roundabout-moveable-item3" style="">
+            <a href="javascript:void (0);" target="_blank">
+                <img src="">
+            </a>
+        </li>
+    </ul>
+    <a href="#" class="next ">&lt;</a>
+    <a href="#" class="prev">&gt;</a>
+</div>
+</body>
+<script src="../../../js/jquery-1.12.0.js"></script>
+<script src="roundabout.min.js"></script>
+<script src="roundabout_shapes.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myroundabout').roundabout({
+            btnNext: ".next",
+            btnPrev:".prev",
+            autoplay: false,
+            autoplayDuration: 3000,
+            autoplayPauseOnHover: true,
+            shape: 'square',
+            minOpacity: 1
+        });
+    });
+</script>
+</html>

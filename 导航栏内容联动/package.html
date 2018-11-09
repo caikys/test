@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>包养计划提货区</title>
+	<link rel="stylesheet" href="/themes/../public/stylesheets/ratchet.min.css">
+	<link rel="stylesheet" href="/themes/mobile/shanyaohui/statics/amazeui.min.css">
+	<script src="/themes/mobile/shanyaohui/statics/jquery.min.js"></script>
+	<script src="/themes/mobile/shanyaohui/statics/amazeui.js"></script>
+	<script src="/themes/mobile/shanyaohui/statics/rem.js"></script>
+	<script src="/themes/mobile/shanyaohui/statics/jquery.lazyload.min.js"></script>
+	<script src="/themes/mobile/shanyaohui/statics/assets/art-template.js"></script>
+    <link rel="stylesheet" href="/themes/mobile/shanyaohui/statics/reset.css">
+    <link rel="stylesheet" href="/themes/mobile/shanyaohui/statics/css/recommend/index.css">
+    <link rel="stylesheet" href="/themes/mobile/shanyaohui/statics/css/act/package.css">
+</head>
+<body>
+    <header>
+        <a class="history" href="javascript:history.go(-1);"><img src="/themes/mobile/shanyaohui/images/history.png"></a>
+        <a href="/m/index.html" class="home"><img src="/themes/mobile/shanyaohui/images/header_h.png"></a>
+        <h1 class="title">包养计划提货区</h1>
+        <div class="right">
+            <a href="/m/cart.html" class="cart"><img src="/themes/mobile/shanyaohui/images/header_c.png"></a>
+            <a href="/m/categ.html" class="categ"><img src="/themes/mobile/shanyaohui/images/header_s.png"></a>
+        </div>
+    </header>
+    <div class="content">
+        <{if $coins}>
+        <div class="img_top">
+            <img src="//statics.shanyaohui.com/9c/38/33ce3114e5b5.png?44627_H306_W640">
+            <a href="/m/prefecture-hot_detail.html?id=62"><img src="//statics.shanyaohui.com/60/27/20002dbb0301.png?44598_H149_W640"></a>
+        </div>
+        <div class="pos_card">
+            <div class="inner">
+                <p>提货卡余额<span>当月有效</span></p>
+                <p>¥<{$coins.coins|cur}></p>
+            </div>
+        </div>
+        <{else}>
+        <{if $this_month_orders}>
+        <div class="img_top">
+            <img src="//statics.shanyaohui.com/9c/38/33ce3114e5b5.png?44627_H306_W640">
+            <a href="/m/prefecture-hot_detail.html?id=62"><img src="//statics.shanyaohui.com/60/27/20002dbb0301.png?44598_H149_W640"></a>
+        </div>
+        <div class="pos_card">
+            <div class="inner">
+                <p style="height: .26rem;"></p>
+                <p style="font-size: .38rem;">您的提货卡将于下个月1号发放</p>
+            </div>
+        </div>
+        <{else}>
+        <div class="img_top">
+            <img src="//statics.shanyaohui.com/9e/c2/c2e76e9b4cc8.png?28527_H306_W640">
+            <a href="/m/prefecture-hot_detail.html?id=62"><img src="//statics.shanyaohui.com/ee/db/dcec5eb0e29a.png?28507_H145_W640"></a>
+            <img src="//statics.shanyaohui.com/f3/c8/c73c53e02d6e.png?45020_H95_W640">
+        </div>
+        <{/if}>
+        <{/if}>
+        <div class="navagate">
+            <div class="all_classy">全部分类</div>
+            <div class="nav_top">
+                <div class="nav_inner nav_fold">
+                    <{foreach from=$goods key=ck item=cat}>
+	            	<a href="#con-<{$ck}>"><{$cat.cat_name}></a>
+                    <{/foreach}>
+                </div>
+                <div class="nav_inner nav_open hide">
+                    <{foreach from=$goods key=ck item=cat}>
+	            	<a href="#con-<{$ck}>"><{$cat.cat_name}></a>
+                    <{/foreach}>
+                </div>
+            </div>
+            <span class="user-arrow"><img src="/themes/mobile/shanyaohui/images/icon_bottom.png" class="arrow rotate1"></span>
+        </div>
+        
+		<{foreach from=$goods key=ck item=cat}>
+            <h4 id="con-<{$ck}>" class="classiy"><{$cat.cat_name}></h4>
+            <div class="selected_area">
+                <div class="selected_inner">
+                    <ul class="goods-list">
+                        <{foreach from=$cat.item key=gk item=goods}>
+                        <li>
+                            <a href="/m/item-<{$goods.product_id}>.html">
+                                <div class="goods-img">
+                                    <img class="lazy" src="/themes/mobile/shanyaohui/images/loading_img.gif" data-original="<{$goods.image_id|storager:'s'}>" class="small-img">
+                                </div>
+                                <div class="goods-detail">
+                                    <p class="goods-name"><{$goods.name}></p>
+                                    <p class="priced">￥<del><{$goods.mktprice}></del></p>
+                                    <p class="price">￥<{$goods.price}><span>已售<{$goods.buy_count + $goods.buy_num}>笔</span></p>
+                                </div>
+                            </a>
+                        </li>
+                        <{/foreach}>
+                    </ul>
+                </div>
+            </div>
+		<{/foreach}>
+    </div>
+    <a href="/m/my.html" class="my_right"><img src="/themes/mobile/shanyaohui/images/in_my.png"></a>
+    <div class="go-top" style="display:none;">
+        <img src="/themes/mobile/shanyaohui/images/totop-icon.png" alt="">
+    </div>
+</body>
+
+<script>
+    // 第一个
+    $('.nav_inner').find("a").eq(0).addClass('active')
+    // 导航栏置顶效果
+    $(window).on("scroll", function(){
+        var top_h=$(".img_top").height()+$(".pos_card").height();
+        var scrollTop = $(window).scrollTop();
+        var scrollLeft = $(window).scrollLeft();
+        if (scrollTop >= top_h) {
+            $(".navagate").addClass("navagate_active");
+        }else{
+            $(".navagate").removeClass("navagate_active");
+        } 
+        // 上下滑动
+        $(".classiy").each(function(i){
+            if($(".classiy").eq(i).offset().top<=scrollTop+10){
+                $(".nav_inner a").removeClass("active");
+                $(".nav_inner a").eq(i).addClass("active");
+                if($(".nav_inner a").eq(i).hasClass('active')){
+                    var idx=i;
+                    var _w=$(".nav_inner a").width();//击块的宽度
+                    cen=(idx+1)*_w-(Math.round(_w/2))-(2*_w);
+                    $('.nav_inner').animate({scrollLeft:cen},0);//不可设置过渡时间
+                }
+            }
+        }); 
+        
+    })
+    // 点击事件
+    var nav_widthx = $(".nav_top").width(),//获取菜单可视区域宽度
+        ha=Math.round(nav_widthx/2);
+    $(".nav_fold a").click(function(){
+        var idx=$(this).index();
+        var _w=$(this).width();//当前点击块的宽度
+        cen=(idx+1)*_w-(Math.round(_w/2))-(2*_w)
+        $('.nav_inner').animate({scrollLeft:cen},300);
+        $(".nav_inner a").removeClass("active");
+        $(this).addClass("active");
+    })
+    $(".nav_open a").click(function(){
+        $(this).addClass("active_all");  
+        $('.nav_open').addClass('hide');
+        $(".nav_inner a").removeClass("active_all");
+        $('.nav_fold').show();
+        $(".user-arrow").find('img').removeClass("rotate"); //再次点击箭头回来
+        $(".user-arrow").find('img').addClass("rotate1");
+        $(".all_classy").hide();
+        // 允许滑动
+        $("body").removeClass("body_activ");
+        var idx=$(this).index();
+        var _w=$(this).width();//当前点击块的宽度
+        cen=(idx+1)*_w-(Math.round(_w/2))-(2*_w)
+        $('.nav_inner').animate({scrollLeft:cen},300);
+        $(".nav_inner a").removeClass("active");
+        $(this).addClass("active");
+    })
+    var usercenter = {
+        init:function(){
+            this.modal();
+        },
+        modal: function() {
+            $(".user-arrow").click(function(){ 
+                // 展开                         
+                if($(this).find('img').hasClass("rotate1")){ //点击箭头旋转180度
+                    $(this).find('img').removeClass("rotate1");
+                    $(this).find('img').addClass("rotate");
+                    $(".all_classy").show();
+                    $(".click_bottom").hide();
+                    $('.nav_fold').hide();
+                    $('.nav_open').removeClass('hide');
+                    // 禁止滑动
+                    $("body").addClass("body_activ");
+                    
+                    // 显示全部
+                    $(".nav_fold a").each(function(i){
+                        if($(".nav_fold a").eq(i).hasClass('active')){
+                            $(".nav_fold a").removeClass('active');
+                            $(".nav_open a").eq(i).addClass('active_all');
+                        }
+                    })
+                }else{
+                    // 折叠
+                    $(this).find('img').removeClass("rotate"); //再次点击箭头回来
+                    $(this).find('img').addClass("rotate1");
+
+                    $(".all_classy").hide();
+
+                    // 允许滑动
+                    $("body").removeClass("body_activ");
+
+                    $('.nav_fold').show();
+                    $('.nav_open').addClass('hide');
+
+                    $(".nav_open a").each(function(i){
+                        if($(".nav_open a").eq(i).hasClass('active_all')){
+                            $(".nav_open a").removeClass('active_all');
+                            $(".nav_fold a").eq(i).addClass('active');
+                        }
+                    }) 
+                }
+            })
+        }
+    }
+    usercenter.init();
+
+    $(function() {
+        $("img.lazy").lazyload();
+    });
+
+    //回到顶部
+    $(function () {
+        $(window).scroll(function () {
+            var scroll_height = $(window).scrollTop();
+            if (scroll_height > 240) {
+                $(".go-top").fadeIn();
+
+            } else {
+                $(".go-top").fadeOut();
+            }
+
+        });
+        $(".go-top").click(function (event) {
+            $("html,body").animate({ scrollTop: 0 }, "slow");
+        });
+    });
+</script>
+</html>

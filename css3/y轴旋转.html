@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.myDiv{
+		width: 100px;
+		height: 100px;
+		background: red;
+		border-radius: 50%;
+		text-align: center;
+		line-height: 100px;
+		color: #fff;
+		font-size: 26px;
+
+	}
+	.myDiv.active{
+	   cursor: pointer;
+
+	    animation:rotate 1s infinite linear;
+        -webkit-animation:rotate 1s infinite linear;
+        -moz-animation:rotate 1s infinite linear;
+        -ms-animation:rotate 1s infinite linear;
+        -o-animation:rotate 1s infinite linear;
+
+	}
+
+	@keyframes rotate{
+        from{
+            -webkit-transform: rotate3d(0,1,0,0deg);
+		    -moz-transform: rotate3d(0,1,0,0deg);
+		    transform: rotate3d(0,1,0,0deg);
+		    -o-transform:rotate3d(0,1,0,0deg);
+        }
+        to{
+            -webkit-transform: rotate3d(0,1,0,360deg);
+		    -moz-transform: rotate3d(0,1,0,360deg);
+		    transform: rotate3d(0,1,0,360deg);
+		    -o-transform:rotate3d(0,1,0,360deg);
+        }
+    }
+    @-webkit-keyframes rotate{
+        from{
+            -webkit-transform: rotate3d(0,1,0,0deg);
+		    -moz-transform: rotate3d(0,1,0,0deg);
+		    transform: rotate3d(0,1,0,0deg);
+		    -o-transform:rotate3d(0,1,0,0deg);
+        }
+        to{
+            -webkit-transform: rotate3d(0,1,0,360deg);
+		    -moz-transform: rotate3d(0,1,0,360deg);
+		    transform: rotate3d(0,1,0,360deg);
+		    -o-transform:rotate3d(0,1,0,360deg);
+        }
+    }
+    @-moz-keyframes rotate{
+        from{
+            -webkit-transform: rotate3d(0,1,0,0deg);
+		    -moz-transform: rotate3d(0,1,0,0deg);
+		    transform: rotate3d(0,1,0,0deg);
+		    -o-transform:rotate3d(0,1,0,0deg);
+        }
+        to{
+            -webkit-transform: rotate3d(0,1,0,360deg);
+		    -moz-transform: rotate3d(0,1,0,360deg);
+		    transform: rotate3d(0,1,0,360deg);
+		    -o-transform:rotate3d(0,1,0,360deg);
+        }
+    }
+    @-ms-keyframes rotate{
+        from{
+            -webkit-transform: rotate3d(0,1,0,0deg);
+		    -moz-transform: rotate3d(0,1,0,0deg);
+		    transform: rotate3d(0,1,0,0deg);
+		    -o-transform:rotate3d(0,1,0,0deg);
+        }
+        to{
+            -webkit-transform: rotate3d(0,1,0,360deg);
+		    -moz-transform: rotate3d(0,1,0,360deg);
+		    transform: rotate3d(0,1,0,360deg);
+		    -o-transform:rotate3d(0,1,0,360deg);
+        }
+    }
+    @-o-keyframes rotate{
+        from{
+            -webkit-transform: rotate3d(0,1,0,0deg);
+		    -moz-transform: rotate3d(0,1,0,0deg);
+		    transform: rotate3d(0,1,0,0deg);
+		    -o-transform:rotate3d(0,1,0,0deg);
+        }
+        to{
+            -webkit-transform: rotate3d(0,1,0,360deg);
+		    -moz-transform: rotate3d(0,1,0,360deg);
+		    transform: rotate3d(0,1,0,360deg);
+		    -o-transform:rotate3d(0,1,0,360deg);
+        }
+    }
+</style>
+<body>
+	<div class="myDiv">开</div>
+	<span class="btn">点击我旋转</span>
+</body>
+<script type="text/javascript" src="../js/jquery-1.12.0.js"></script>
+<script>
+	$(".btn").click(function(){
+		$(".myDiv").addClass("active");
+	})
+</script>
+</html>

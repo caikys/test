@@ -5,41 +5,52 @@
 	<title>Document</title>
 </head>
 <style type="text/css">
-	table{
-		border: 1px solid #000;
+	body,html{
+		height: 100%;
+		margin: 0;
+		padding: 0;
 	}
-	table td{
-		border: 1px solid #eee;
-		padding: 0
+	div span{
+		display: inline-block;
+		width: 100px;
+		background: red;
+		color: #fff;
+		text-align: center;
 	}
 </style>
 <body>
-	<table width="800">
-		<tr>
-			<td>商品</td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td>
-				<table>
-					<tr>
-						<td>颜色</td>
-					</tr>
-				</table>
-			</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
-
+	<div class="list">
+		<span class="num-btn">10</span>
+		<span class="num-btn">50</span>
+		<span class="num-btn">1000</span>
+		<span class="num-btn">5000</span>
+		<span class="other-btn">其他金额</span>
+	</div>
+	请输入充值金额：<input type="text" value="100">
 </body>
+<script type="text/javascript" src="js/jquery-1.12.0.js"></script>
+<script>
+	// 点击面值事件
+	$(".list .num-btn").click(function(){
+		var num=$(this).text();
+		$("input").val(num)
+	})
+
+	// 点击其他金额事件
+	$(".list .other-btn").click(function(){
+		$("input").val("");
+		$("input").focus();
+	})
+
+	// 手动输入
+	$("input").bind("input propertychange",function(){
+		var val_num=$(this).val();
+		console.log(val_num);
+		if(val_num==""){
+			$(this).val(100);
+		}else if(0<val_num<=100000){
+			
+		}
+	})
+</script>
 </html>

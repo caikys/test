@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+</head>
+<style>
+	ul li{
+		width: 100px;
+		height: 50px;
+		background: #74D2D4;
+		list-style-type: none;
+		display: inline-block;
+		line-height: 50px;
+		color: #fff;
+		text-align: center;
+	}
+	ul li.active{
+		border: 1px solid red;
+		background: #74D2D4;
+
+	}
+	ul li.unactive{
+		background: #CCCCCC;
+		border: none;
+		pointer-events: none;/*不可点击*/
+	}
+</style>
+<body>
+	<ul>
+		<li data-type="false">10元</li>
+		<li data-type="false">20元</li>
+		<li data-type="false">50元</li>
+		<li data-type="false">100元</li>
+		<li data-type="false">200元</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	// 点击
+	$("ul li").click(function(){
+		if($(this).attr("data-type")=="false"){
+			// 选中
+			$(this).attr("data-type","true");
+			$("ul li").removeClass("active").addClass("unactive");
+			// $("ul li").attr("disabled",true);
+			$(this).removeClass("unactive").addClass("active");
+			// $(this).attr("disabled",false)
+		}else{
+			$(this).attr("data-type","false");
+			$("ul li").removeClass("active unactive");
+		}
+	})
+
+
+
+</script>
+</html>

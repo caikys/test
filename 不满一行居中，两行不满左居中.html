@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.word {
+			width: 200px;
+			margin: 20px auto 0;
+			border: 1px solid #ccc;
+			display:-webkit-box;
+			display:-webkit-flex; 
+			display:-moz-box; 
+			display:-ms-flexbox; 
+			display:flex;
+			justify-content: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="word">我们都是好孩子</div>
+	<div class="word">
+	我们都是好孩子我们都是好孩子
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".word").attr({
+		width:"50",
+		height:"80"
+	})
+})
+	
+	
+</script>
+</html>

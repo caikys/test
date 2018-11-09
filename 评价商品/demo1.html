@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品评分</title>
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+	<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="iconfont/iconfont.js"></script>
+</head>
+<style type="text/css">
+	.star-level .iconfont{
+		font-size: 24px;
+	}
+	.icon-xing{
+		color: #FFC300
+	}
+	.icon-xing1{
+		color: 
+	}
+</style>
+<body>
+	<div class="goods-rate">商品评分
+		<span class="star-level">
+			<i class="iconfont icon-xing"></i>
+			<i class="iconfont icon-xing"></i>
+			<i class="iconfont icon-xing"></i>
+			<i class="iconfont icon-xing"></i>
+			<i class="iconfont icon-xing"></i>
+		</span>
+		<input type="hidden" name="goods-level" value="5" />
+	</div>
+</body>
+<script type="text/javascript">
+	$(".star-level").find("i").click(function () { 
+        var e = $(this).index(); 
+        for (var a = 0; a < 5; a++) { 
+            var r = $(this).parent().find("i").eq(a); 
+            if (a <= e) { 
+                r.removeClass("icon-xing1").addClass("icon-xing") 
+            } 
+            else { 
+                r.removeClass("icon-xing").addClass("icon-xing1") 
+            } 
+        } 
+        $(this).parent().next().val(e + 1) 
+    });
+</script>
+</html>

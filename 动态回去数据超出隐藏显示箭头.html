@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<p>如图要形成两种效果数据加载进来的时候，如果数据的内容超出了一行，那就会出现箭头并且多余的部分会隐藏，不超出的部分不会出现箭头</p>
+		<img src="images/aa.png" alt="">
+	</div>
+	
+</body>
+<script type="text/javascript">
+	// 思维：将请求改为同步请求，能将数据先请求好，避免在获取DOM的时候获取不到，而获取不到其DOM对应的高度，所以这里弟确保加载完数据以后才执行DOM操作，先设置一个class是用于超出隐藏的
+	 $.ajax({
+        type: "GET",
+		async: false,//重点1
+        url: ApiUrl + "/index.php?ctl=member_voucher&act=voucher_list",
+        data: {
+            'key':key,
+            'voucher_state':state,
+			'page':page,
+			'curpage':curpage
+        },
+        dataType: "json",
+        success: function(e) {
+            if(e.login){
+                checkLogin(e.login);                    
+            }
+            curpage++;
+            hasMore = e.hasmore;
+            if (!hasMore) {
+                get_footer()
+            }
+            var t = e;
+            var r = template.render("voucher-list-tmpl", t);
+            if (reset) {
+                reset = false;
+                $("#voucher-list").html(r)
+            } else {
+                $("#voucher-list").append(r)
+            }
+
+            //重点二
+			$('.nctouch-tickets li').each(function(){
+				var h=$(this).find('.txt-inner').height();
+				var fixed_h=$(this).find('.icon-xia_').height();
+				// 超出					
+				if(h>fixed_h){
+					$(this).find('.txt-inner').addClass('over-active');
+					$(this).find('.icon-xia_').css('visibility','visible');
+				}
+			})
+        }
+    })
+</script>
+</html>

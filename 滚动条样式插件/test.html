@@ -1,0 +1,183 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>scrollBar</title>
+<style type="text/css">
+body,div,ul,li{margin: 0;padding: 0}
+ul{width: 100%}
+li{list-style:none;padding: 10px 16px;border-bottom:1px solid #ddd;}
+.scrollBar{width: 200px;height: 150px;border:1px solid red;margin-left: 100px;}
+</style>
+</head>
+<body>
+<div id="scrollBar" class="scrollBar">
+<div class="content">
+<ul><li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+</ul>
+</div>
+</div>
+<script type="text/javascript">
+;(function(w){
+function ScrollBar(ele){
+var that = this;
+this.coord_Y = null;
+this.box = document.querySelector(ele);
+this.con = this.box.firstElementChild;
+this.con.insertAdjacentHTML('afterend','<div class="barBox"><div class="bar"></div></div>')
+this.barBox = this.box.querySelector('.barBox');
+this.bar = this.box.querySelector('.bar');
+this.setStyle();
+this.mouseDown(function(res){
+if(res === 'success'){
+that.mouseMove();
+that.mouseUp();
+}
+});
+this.system = window.navigator.userAgent.toLowerCase();
+this.mouseScroll();
+}
+ScrollBar.prototype ={
+setStyle:function(){
+var that = this;
+var ab = 'absolute',
+re = 'relative',
+p = 'position',
+h = 'height',
+w = "width",
+l = 'left',
+r = 'right',
+t = "top",
+bs = 'box-shadow',
+bs_v = 'inset 0 0 6px rgba(0, 0, 0, .3)',
+ten = '10px',
+bg = "background",
+bg_v = "rgba(230, 230, 230, .5)",
+br = 'border-radius',
+c = 'cursor';
+that.box.style['overflow'] = 'hidden';
+that.box.style[p] = re;
+that.barBox.style[w] = ten;
+that.barBox.style[p] = ab;
+that.barBox.style[t] = '0%';
+that.barBox.style[r] = 0;
+that.barBox.style[h] = '100%';
+that.barBox.style[bs] = bs_v;
+that.con.style[w] = '95%';
+that.con.style[p] = ab;
+that.con.style[l] = 0;
+that.con.style[t] = 0;
+that.bar.style[w] = '10px';
+that.bar.style[h] = '50px';
+that.bar.style[p] = ab;
+that.bar.style[t] = 0;
+that.bar.style[r] = 0;
+that.bar.style[bg] = bg_v;
+that.bar.style[bs] = bs_v;
+that.bar.style[br] = '4px';
+that.bar.style[c] = 'pointer';
+},
+mouseDown:function(callback){
+var that = this;
+document.onmousedown = function(e){
+var e = e || window.event;
+if(e.preventDefault()){
+e.preventDefault();
+}else{
+e.returnValue = false;
+};
+that.coord_Y =e.clientY-that.bar.offsetTop; //当前鼠标在Bar所点击的位置
+callback('success')
+}
+},
+mouseMove:function(){
+var that = this;
+document.onmousemove=function(e){
+var e = e || window.event;
+var top = e.clientY - that.coord_Y; //当前bar距顶部的距离
+if(top <= 0){
+top = 0;
+}
+if(top >= that.bar_maxLen()){ //超出最大距离就为最大距离
+top = that.bar_maxLen();
+}
+var scale = top / that.bar_maxLen();  //获取bar移动的比率
+var con_top = scale * that.con_maxLen();  //用bar的移动比率计算content距顶部的距离
+that.bar.style.top = top + 'px';
+that.con.style.top = -con_top + 'px'; //注意：content的距离应该是相反的
+}
+},
+mouseUp:function(){
+document.onmouseup=function(){
+document.onmousemove=null;
+}
+},
+mouseScroll:function(){
+var that = this;
+if(that.system.indexOf('firefox')!=-1){ //火狐浏览器
+that.box.addEventListener('DOMMouseScroll',function(e){
+e.preventDefault();
+if (e.detail<0) {
+var top = that.con.offsetTop+20;
+that.setVal(top)
+}
+if (e.detail>0) {
+var top = that.con.offsetTop-20;
+that.setVal(top)
+}
+})
+}else{ //其他浏览器
+that.box.onmousewheel = function(e){
+var e = e || window.event;
+if(e.preventDefault()){
+e.preventDefault();
+}else{
+e.returnValue = false;
+}
+if(e.wheelDelta>0){
+var top = that.con.offsetTop+20;
+that.setVal(top)
+}
+if(e.wheelDelta<0){
+var top = that.con.offsetTop-20;
+that.setVal(top)
+}
+}
+}
+},
+bar_maxLen:function(){
+var that = this;
+return that.barBox.clientHeight - that.bar.clientHeight; //bar的最大距离；
+},
+con_maxLen:function(){
+var that = this;
+return that.con.clientHeight - that.box.clientHeight;////主内容距顶部的距离
+},
+setVal:function(top){
+var that = this;
+if(top >= 0){
+top = 0;
+}
+if(top <= -that.con_maxLen()){
+top = -that.con_maxLen()
+}
+var scale = top / that.con_maxLen();
+var barTop = scale * that.bar_maxLen();
+that.bar.style.top = -barTop + 'px';//注意：bar的距离应该是相反的
+that.con.style.top = top + 'px'; 
+}
+}
+w.ScrollBar = ScrollBar;
+})(window);
+ new  ScrollBar('#scrollBar'); ///插件调用
+</script>
+</body>
+</html>

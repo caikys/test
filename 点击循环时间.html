@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	span{
+		display: inline-block;
+		width: 100px;
+		text-align: center;
+		height: 50px;
+		line-height: 50px;
+	}
+	.day-btn{
+		background: #2579D9;
+		color: #fff;
+	}
+	.time-list span{
+		border: 1px solid red;
+	}
+	.time-list{
+		margin: 15px 0;
+	}
+	.time-list span.active{
+		background: #2579D9;
+		color: #fff;
+	}
+	.content{
+		width: 200px;
+		height: 200px;
+		background: yellow
+	}
+</style>
+<body>
+	<span class="day-btn pre-day">上一天</span>
+	<div class="time-list">
+		<span class="active">0号</span>
+		<span>1号</span>
+		<span>2号</span>
+		<span>3号</span>
+		<span>4号</span>
+	</div>
+	<span class="day-btn next-day">下一天</span>
+	<div class="content">
+		<div>0号的内容</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.12.0.js"></script>
+<script>
+/**
+ * 上一天的点击事件
+ * @param  {String} ) {		var       idx [description]
+ * 步骤一：对应的日期高亮显示。存在两种情况：
+ * 1、开始默认是第一个，高亮选中最后一个。
+ * 2、不是第一个，那点击上一天的时候，就是下标减一的元素高亮。
+ *步骤二：对应的内容显示，此处我们利用点击的时候像后台请求数据，将容器内容替换为对应的数据即可
+ */
+$(".pre-day").click(function () {
+
+	// 循环提取出高亮元素的下标
+	var idx="";
+	$(".time-list span").each(function(){
+		// 含有active的就是高亮元素，利用$(this).hasClass("active")做判断
+		if($(this).hasClass("active")){
+			idx=$(this).index();
+		}
+	})
+
+
+	// 判断两种情况
+	if(idx==0){
+		console.log(1)
+		// 第一个
+		$(".time-list span").removeClass("active");
+		$(".time-list span:last").addClass("active");
+
+		// 数据请求替换
+		var html="<div>4号的内容</div>";
+		$(".content").html("").append(html);
+
+	}else{
+		console.log(2)
+		$(".time-list span").removeClass("active");
+		$(".time-list span").eq(idx-1).addClass("active");
+
+		// 数据请求替换
+		var html="<div>"+(idx-1)+"号的内容</div>";
+		$(".content").html("").append(html);
+	}
+	
+})
+
+/**
+ * 下一天的点击事件：
+ *步骤一：对应的日期高亮显示。存在两种情况：
+ * 1、最后一个，第一个高亮，
+ * 2、是第一个，就是下标加一的元素高亮。
+ *步骤二：对应的内容显示，此处我们利用点击的时候像后台请求数据，将容器内容替换为对应的数据即可
+ */
+$(".next-day").click(function () {
+	// 循环提取出高亮元素的下标
+	var idx="";
+	$(".time-list span").each(function(){
+		// 含有active的就是高亮元素，利用$(this).hasClass("active")做判断
+		if($(this).hasClass("active")){
+			idx=$(this).index();
+		}
+	})
+
+
+	// 判断两种情况
+	var last_idx=$(".time-list span:last").index();
+	if(idx==last_idx){
+		console.log(1)
+		// 最后一个
+		$(".time-list span").removeClass("active");
+		$(".time-list span:first").addClass("active");
+
+		// 数据请求替换
+		var html="<div>0号的内容</div>";
+		$(".content").html("").append(html);
+
+	}else{
+		// 不是最后
+		console.log(2)
+		$(".time-list span").removeClass("active");
+		$(".time-list span").eq(idx+1).addClass("active");
+
+		// 数据请求替换
+		var html="<div>"+(idx+1)+"号的内容</div>";
+		$(".content").html("").append(html);
+	}
+})
+
+
+/** 
+ * 点击对应的日期:
+ * 1、当前日期高亮
+ * 2、显示对应的内容
+ */
+$(".time-list span").click(function(){
+	// 1、当前日期高亮
+	$(".time-list span").removeClass("active");
+	$(this).addClass("active");
+
+ 	// 2、显示对应的内容
+	// 数据请求替换
+	var idx=$(this).index();
+	var html="<div>"+idx+"号的内容</div>";
+	$(".content").html("").append(html);
+})
+
+
+
+</script>
+</html>

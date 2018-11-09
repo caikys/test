@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
+	<title>实名认证</title>
+	<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+</head>
+<style type="text/css">
+	.upload-vh {
+	    width: 6.52rem;
+	    height: 4.09rem;
+	    border: 1px dashed #B2B2B2;
+	    border-radius: 0.26rem;
+	    margin-right: 0.65rem;
+	    margin-bottom: 0.87rem;
+	    position: relative;
+	}
+	.nctouch-upload .input-file {
+	    width: 100%;
+	    height: 100%;
+	    padding: 0;
+	    margin: 0;
+	    border: none 0;
+	    opacity: 0;
+	    filter: alpha(opacity=0);
+	}
+	.upload-vh i {
+	    font-size: 0.52rem;
+	    color: #8B858D;
+	    display: block;
+	    text-align: center;
+	    left: 0.5rem;
+	    bottom: 0.43rem;
+	    position: absolute;
+	}
+	.upload-vh .upload-loading {
+	    width: 100%;
+	    border-radius: 4px;
+	    overflow: hidden;
+        position: absolute;
+	    z-index: 4;
+	    left: 0;
+	    top: -2.2em;
+	    bottom: 0;
+	    right: 0;
+	    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#3FFFFFFF', endColorstr='#3FFFFFFF');
+	    background: rgba(255, 255, 255, 0.25);
+	}
+	.upload-loading i {
+	    display: block;
+	    width: 100%;
+	    height: 5%;
+	    margin: 93% 0 2% 0;
+	    background: #4FC0E8;
+	    /*animation: optionLoading 3s ease-in-out;
+	    -webkit-animation: optionLoading 3s ease-in-out;*/
+	    transition: width 3s ease-in-out;
+	}
+</style>
+<body>
+	<div class="voucher">
+        <p class="upload-voucher">上传凭证</p>
+        <div class="nctouch-upload upload-vh">
+            <input type="file" hidefocus="true" size="1" class="input-file" name="file" id="positive">
+            <i>身份证正面照片</i>
+            <input type="hidden" name="idcfront" value="">
+            <!-- <div class="upload-loading"><i></i></div> -->
+        </div>
+        <div class="nctouch-upload upload-vh upload-fm">
+            <input type="file" hidefocus="true" size="1" class="input-file" name="file" id="negative">
+            <i>身份证反面照片</i>
+            <input type="hidden" name="idcback" value="">
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+	$.fn.ajaxUploadImage = function (e) {
+	    var t = {
+	        url: "", data: {}, start: function () {
+	        }, success: function () {
+	        }
+	    };
+	    var e = $.extend({}, t, e);
+	    var a;
+
+	    function n() {
+	        if (a === null || a === undefined) {
+	            alert("请选择您要上传的文件！");
+	            return false
+	        }
+	        return true
+	    }
+
+	    return this.each(function () {
+	        $(this).on("change", function () {
+	            var t = $(this);
+	            e.start.call("start", t);
+	            a = t.prop("files")[0];
+	            if (!n)return false;
+	            try {
+	                var r = new XMLHttpRequest;
+	                r.open("post", e.url, true);
+	                //r.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	                r.onreadystatechange = function () {
+	                    if (r.readyState == 4) {
+	                        returnDate = $.parseJSON(r.responseText);
+	                        e.success.call("success", t, returnDate)
+	                    }
+	                };
+	                var i = new FormData;
+	                for (k in e.data) {
+	                    i.append(k, e.data[k])
+	                }
+	                i.append(t.attr("name"), a);
+	                result = r.send(i)
+	            } catch (o) {
+	                console.log(o);
+	                alert(o)
+	            }
+	        })
+	    })
+	};
+	$(function(){
+		// 上传正面
+	    var idcfront,idcback;
+	    $("#positive").on("click",function(){
+	    	$(this).siblings().after('<div class="upload-loading"><i></i></div>'); 
+	    	
+	        $(this).ajaxUploadImage({ 
+	            url: ApiUrl + "/index.php?ctl=sns_album&act=file_upload", 
+	            data: { key: e }, 
+	            start: function (e) { 
+	                e.parent().after('<div class="upload-loading"><i></i></div>'); 
+	                e.parent().siblings(".pic-thumb").remove() 
+	            }, 
+	            success: function (e, a) {
+	                // console.log(a.datas.file_id)
+	                idcfront=a.datas.file_name;
+	                checkLogin(a.login); 
+	                if (a.datas.error) { 
+	                    e.parent().siblings(".upload-loading").remove(); 
+	                    $.sDialog({ 
+	                        skin: "red", 
+	                        content: "图片尺寸过大！", 
+	                        okBtn: false, 
+	                        cancelBtn: false 
+	                    }); return false 
+	                }
+	                e.parent().after('<div class="pic-thumb"><img src="' + a.datas.file_url + '"/></div>'); 
+	                e.parent().siblings(".upload-loading").remove(); 
+	                e.parents("a").next().val(a.datas.file_name);  
+	                $('input[name="idcfront"]').val(a.datas.file_id);
+	            } 
+	        }); 
+	    })
+	})
+</script>
+</html>

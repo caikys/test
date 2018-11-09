@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    </head>
+    <link rel="stylesheet" type="text/css" href="css/dnSlide.css">
+    <style>
+    html{
+        font-size: 20px;
+    }
+    body{
+        font-size: .7rem;
+    }
+    .description {
+        font-size: .65rem;
+        background: yellow !important;
+        border: thin solid #e2c420;
+    }
+    .description li{
+        margin-top: 5px;
+    }
+    /*body{
+        max-width: 950px;
+        margin:0px auto;
+    }*/
+    p{
+        font-size: .65rem;
+        font-weight: bold;
+    }
+    button[type=button]{
+        display: inline-block;
+        padding:4px 6px;
+        margin-bottom: 0;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        font-size: 14px;
+        border-radius: 3px;
+        background-color: #1ab394;
+        border-color: #1ab394;
+        color: #FFFFFF; 
+    }
+    button[type=button]:hover,button[type=button]:focus,button[type=button]:active{
+        background-color: #18a689;
+        border-color: #18a689;
+        color: #FFFFFF;
+    }
+    .wrapper{
+        width: 1200px;
+        margin: 0 auto;
+    }
+    /**/
+    </style>
+    <body>
+    <div class="wrapper">
+        <div class='dnSlide-main four'>
+            <div class="slide-con">
+                <img src="images/seasion/spring-1.jpg" width="100%">
+                <p>这是1</p>
+            </div>
+            <div class="slide-con">
+                <img src="images/seasion/spring-2.jpg" width="100%">
+                <p>这是2</p>
+            </div>
+            <div class="slide-con">
+                <img src="images/seasion/spring-3.jpg" width="100%">
+                <p>这是3</p>
+            </div>
+            <div class="slide-con">
+                <img src="images/seasion/spring-4.jpg" width="100%">
+                <p>这是4</p>
+            </div>
+            <div class="slide-con">
+                <img src="images/seasion/spring-5.jpg" width="100%">
+                <p>这是5</p>
+            </div>
+            <div class="slide-con">
+                <img src="images/seasion/spring-5.jpg" width="100%">
+                <p>这是6</p>
+            </div>
+            <div class="slide-con">
+                <img src="images/seasion/spring-5.jpg" width="100%">
+                <p>这是7</p>
+            </div>
+            <div class="slide-con">
+                <img src="images/seasion/spring-3.jpg" width="100%">
+                <p>这是8</p>
+            </div>
+             <!-- <img src="images/seasion/spring-1.jpg" width="100%">
+            <img src="images/seasion/spring-2.jpg" width="100%">
+            <img src="images/seasion/spring-3.jpg" width="100%">
+            <img src="images/seasion/spring-4.jpg" width="100%">
+            <img src="images/seasion/spring-5.jpg" width="100%"> -->
+        </div>
+
+        <!-- <div class="dnSlide-main aaaa">
+            <div class="slide-con">
+                <img src="images/sea/diploma01.bmp" width="100%">
+                <p>这是1</p>
+            </div>
+            <div class="slide-con">
+                <img src="images/sea/diploma02.jpg" width="100%">
+                <p>这是2</p>
+            </div>
+            <div class="slide-con">
+                <img src="images/sea/diploma03.bmp" width="100%">
+                <p>这是3</p>
+            </div>
+            <div class="slide-con">
+                <img src="images/sea/diploma04.jpg" width="100%">
+                <p>这是4</p>
+            </div>
+            <div class="slide-con">
+                <img src="images/sea/diploma05.bmp" width="100%">
+                <p>这是5</p>
+            </div>
+        </div> -->
+    </div>
+
+    <script src="js/jquery-1.12.0.js"></script>
+    <script src="js/dnSlide1.js"></script>
+    <script>
+    $(function(){
+        /**
+         * 第四个轮播
+         * @type {Object}
+         */
+        var setting4 = {
+            // "response" : true ,
+            // "verticalAlign":"top",
+            "switching":"custom",//点击对应图片显示
+            // "precentWidth":"25%",
+            // "autoPlay":true,
+            // "delay":2000,
+            afterClickBtnFn :function(i){ console.log(i); }
+        };
+        // setting1.verticalAlign = "top" ;
+        // setting1.switching     = "custom" ;
+        // setting1.precentWidth  = "25%" ;
+        var api = $(".four").dnSlide(setting4).data( "four" ); 
+        $(".hide").on("click",function(){
+            api.hide(function(){
+                alert('HIDEEN！！！');
+            });
+        });
+        $(".show").on("click",function(){
+            api.show(function(){
+                alert('SHOW！！！');
+            });
+        });
+
+        // var setting1 = {
+        //     // "response" : true ,
+        //     // "verticalAlign":"top",
+        //     "switching":"custom",//点击对应图片显示
+        //     "precentWidth":"31.6%",
+        //     // "autoPlay":true,
+        //     // "delay":2000,
+        //     afterClickBtnFn :function(i){ console.log(i); }
+        // };
+        // // setting1.verticalAlign = "top" ;
+        // // setting1.switching     = "custom" ;
+        // // setting1.precentWidth  = "25%" ;
+        // var api = $(".aaaa").dnSlide(setting1).data( "aaaa" ); 
+        // $(".hide").on("click",function(){
+        //     api.hide(function(){
+        //         alert('HIDEEN！！！');
+        //     });
+        // });
+        // $(".show").on("click",function(){
+        //     api.show(function(){
+        //         alert('SHOW！！！');
+        //     });
+        // });
+
+    })
+    </script>
+    </body>
+</html>
+
